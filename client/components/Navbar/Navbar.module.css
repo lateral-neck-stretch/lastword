@@ -1,0 +1,22 @@
+.navbar{
+    display: flex;
+    height: 68px;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 60px;
+}
+.logo{
+    color: white;
+}
+.navbar_list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30vw;
+    list-style-type: none;
+    color: white;
+}
+.navbar_list_item{
+    
+}
