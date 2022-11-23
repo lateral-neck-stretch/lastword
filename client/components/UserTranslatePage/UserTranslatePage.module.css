@@ -1,0 +1,46 @@
+.prompt_section{
+    margin: 30px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.prompt_div{
+    background: rgba(0, 0, 0, 0.6);
+    width: 50%;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
+    padding: 1.5rem;
+    border-radius: 20px;
+    color: white;
+}
+.prompt_interaction{
+    flex-basis: calc(50% - 7rem);
+    max-width: 500px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1rem;
+}
+.user_score{
+    font-size: 4rem;
+}
+.record_audio_button{
+    margin: 0;
+    background: #1D3B4B;
+    font-size: 3rem;
+    border-radius: 100px;
+    text-align: center;
+    padding: 10px 30px;
+}
+.test_result{
+    background: #1D3B4B;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+.speech_div{
+    background: rgba(0, 0, 0, 0.6);
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
+    padding: 1.5rem;
+    border-radius: 20px;
+    color: white;
+}
