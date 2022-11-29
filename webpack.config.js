@@ -16,10 +16,16 @@ module.exports = {
   mode: "development",
   plugins: [
     new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+    }),
+    new webpack.ProvidePlugin({
       process: "process/browser.js",
     }),
   ],
   devtool: "source-map",
+  // externals: {
+  //   fs: require("fs"),
+  // },
   module: {
     rules: [
       {
@@ -36,9 +42,8 @@ module.exports = {
         loader: "css-loader",
       },
       {
-        test: /\.flac$/i,
-        exclude: /node_modules/,
-        use: "file-loader",
+        test: /\.(flac|mp3)$/i,
+        loader: "file-loader",
       },
     ],
   },

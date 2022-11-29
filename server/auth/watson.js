@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const app = require("../app");
+const fs = require("fs");
+// const secure = require("express-secure-only");
+const cors = require("cors");
 const { IamTokenManager } = require("ibm-watson/auth");
 require("dotenv").config({ silent: true });
 
@@ -9,6 +12,14 @@ if (!process.env.SPEECH_TO_TEXT_IAM_APIKEY) {
   );
   process.exit(1);
 }
+
+const corsOptions = {
+  origin: "http://localhost:8080",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+// app.use(helmet.frameguard({ action: "SAMEORIGIN" }));
 
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpack = require("webpack");
@@ -20,6 +31,8 @@ const limiter = new RateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
 });
+
+// app.use(secure());
 app.enable("trust proxy"); // required to work properly behind Bluemix's reverse proxy
 app.use("/", limiter);
 
@@ -34,6 +47,15 @@ router.use(
     publicPath: "/",
   })
 );
+
+// router.get("/audio", async (req, res, next) => {
+//   try {
+//     const audio = fs.createReadStream("public/audiofile.flac");
+//     res.json(audio);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 router.get("/token", async (req, res, next) => {
   try {
