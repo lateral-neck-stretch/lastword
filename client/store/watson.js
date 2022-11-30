@@ -1,37 +1,28 @@
-import axios from "axios";
-
 /**
  * Action Types
  */
-const SET_ANS = "SET_ANS";
+const SET_TRANSCRIPT = "SET_TRANSCRIPT";
 
 /**
  * Action Creators
  */
-const setAns = (ans) => ({ type: SET_ANS, ans });
+export const setTranscript = (transcript) => ({
+  type: SET_TRANSCRIPT,
+  transcript,
+});
 
 /**
  * Thunk Creators
  */
-export const getAns = () => {
-  return async (dispatch) => {
-    try {
-      const res = await axios.get("/api/watson");
-      dispatch(setAns(res));
-    } catch (err) {
-      console.error(err);
-    }
-  };
-};
 
 /**
  * Reducer
  */
-export default function (resp = {}, action) {
+export default function (transcript = [], action) {
   switch (action.type) {
-    case SET_ANS:
-      return action.ans;
+    case SET_TRANSCRIPT:
+      return action.transcript;
     default:
-      return resp;
+      return transcript;
   }
 }

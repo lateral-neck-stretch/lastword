@@ -5,9 +5,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import auth from "./auth";
 import prompt from "./prompt";
 import prompts from "./prompts";
-import resp from "./watson";
+import transcript from "./watson";
 
-const reducer = combineReducers({ auth, prompt, prompts, resp });
+const reducer = combineReducers({ auth, prompt, prompts, transcript });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
