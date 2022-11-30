@@ -7,6 +7,7 @@ import { me } from "./store";
 import UserTranslatePage from "./components/UserTranslatePage/UserTranslatePage";
 import PromptSelection from "./components/PromptSelection";
 import Watson from "./Watson";
+import Results from "./components/Results";
 
 /**
  * COMPONENT
@@ -27,6 +28,7 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/prompts/:id" component={UserTranslatePage} />
             <Route path="/prompts" component={PromptSelection} />
+            <Route path="/results" component={Results} />
             <Redirect to="/home" />
           </Switch>
         ) : (
