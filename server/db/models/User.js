@@ -14,6 +14,29 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    validate: {
+      isEmail: true
+    },
+  },
+  scoreHistory: {
+    type: Sequelize.JSON,
+  },
+  proficiency: {
+    type: Sequelize.INTEGER,
+    validate: {
+      min: 0,
+      max: 300
+    }
+  },
+  topicScores: {
+    type: Sequelize.JSON,
+  },
+  wordScores: {
+    type: Sequelize.JSON,
   }
 })
 

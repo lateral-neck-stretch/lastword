@@ -2,10 +2,6 @@
 const path = require("path");
 const webpack = require("webpack");
 require("dotenv").config();
-// const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
-// const Dotenv = require("dotenv-webpack");
-// const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   entry: ["./client/index.js"],
@@ -23,9 +19,6 @@ module.exports = {
     }),
   ],
   devtool: "source-map",
-  // externals: {
-  //   fs: require("fs"),
-  // },
   module: {
     rules: [
       {
@@ -39,7 +32,7 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        loader: "css-loader",
+        loader: ["css-loader", "style-loader"],
       },
       {
         test: /\.(flac|mp3)$/i,
@@ -48,6 +41,7 @@ module.exports = {
     ],
   },
   resolve: {
+    extensions: ["", ".js", ".jsx"],
     fallback: {
       assert: require.resolve("assert/"),
       buffer: require.resolve("buffer/"),
@@ -63,14 +57,5 @@ module.exports = {
       vm: require.resolve("vm-browserify"),
       zlib: require.resolve("browserify-zlib"),
     },
-    // mainFields: ["browser", "module", "main"],
   },
-  // node: {
-  //   // see http://webpack.github.io/docs/configuration.html#node
-  //   // and https://webpack.js.org/configuration/node/
-  //   fs: "empty",
-  //   module: "empty",
-  //   net: "empty",
-  //   tls: "empty",
-  // },
 };

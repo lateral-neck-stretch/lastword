@@ -1,10 +1,11 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
-import Home from "./components/Home";
-import Watson from "./Watson";
-import { me } from "./store";
+import React, {Component, Fragment} from 'react'
+import {connect} from 'react-redux'
+import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
+import { Login, Signup } from './components/AuthForm';
+import Home from './components/Home';
+import {me} from './store'
+import UserTranslatePage from './components/UserTranslatePage/UserTranslatePage';
+import PromptSelection from './components/PromptSelection';
 
 /**
  * COMPONENT
@@ -23,6 +24,8 @@ class Routes extends Component {
           <Switch>
             {/* <Route path="/watson" component={Watson} /> */}
             <Route path="/home" component={Home} />
+            <Route path="/prompts/:id" component={UserTranslatePage} />
+            <Route path="/prompts" component={PromptSelection} />
             <Redirect to="/home" />
           </Switch>
         ) : (
