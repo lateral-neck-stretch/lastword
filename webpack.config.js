@@ -19,6 +19,14 @@ module.exports = {
     }),
   ],
   devtool: "source-map",
+  // externals: {
+  //   fs: require("fs"),
+  // },
+  // =======
+  //   resolve: {
+  //     extensions: ['', '.js', '.jsx']
+  //   },
+  //   devtool: 'source-map',
   module: {
     rules: [
       {
@@ -32,7 +40,7 @@ module.exports = {
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        loader: ["css-loader", "style-loader"],
+        loader: "css-loader",
       },
       {
         test: /\.(flac|mp3)$/i,
@@ -41,7 +49,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["", ".js", ".jsx"],
     fallback: {
       assert: require.resolve("assert/"),
       buffer: require.resolve("buffer/"),
@@ -52,6 +59,7 @@ module.exports = {
       https: require.resolve("https-browserify"),
       os: require.resolve("os-browserify/browser"),
       path: require.resolve("path-browserify"),
+      querystring: require.resolve("querystring-es3"),
       stream: require.resolve("stream-browserify"),
       util: require.resolve("util/"),
       vm: require.resolve("vm-browserify"),

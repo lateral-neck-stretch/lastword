@@ -2,8 +2,6 @@ import React, { useState, useEffect, useReducer } from "react";
 import { BearerTokenAuthenticator } from "ibm-watson/auth";
 import SpeechToTextV1 from "ibm-watson/speech-to-text/v1";
 import axios from "axios";
-import recognizeFile from "watson-speech/speech-to-text/recognize-file";
-import { initialState, ibmReducer } from "./store/ibm";
 import ServiceContainer from "./components/Watson/ServiceContainer";
 
 // var recognizeMic = require('watson-speech/speech-to-text/recognize-microphone');

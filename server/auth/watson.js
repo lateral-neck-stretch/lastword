@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const app = require("../app");
 const fs = require("fs");
+const helmet = require("helmet");
 // const secure = require("express-secure-only");
 const cors = require("cors");
 const { IamTokenManager } = require("ibm-watson/auth");
@@ -19,7 +20,7 @@ const corsOptions = {
   optionSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
-// app.use(helmet.frameguard({ action: "SAMEORIGIN" }));
+app.use(helmet.frameguard({ action: "SAMEORIGIN" }));
 
 const webpackDevMiddleware = require("webpack-dev-middleware");
 const webpack = require("webpack");
@@ -27,7 +28,7 @@ const webpackConfig = require("../../webpack.config");
 
 // enable rate-limiting
 const RateLimit = require("express-rate-limit");
-const limiter = new RateLimit({
+const limiter = RateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // limit each IP to 100 requests per windowMs
 });

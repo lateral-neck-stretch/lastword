@@ -1,11 +1,12 @@
-import React, {Component, Fragment} from 'react'
-import {connect} from 'react-redux'
-import {withRouter, Route, Switch, Redirect} from 'react-router-dom'
-import { Login, Signup } from './components/AuthForm';
-import Home from './components/Home';
-import {me} from './store'
-import UserTranslatePage from './components/UserTranslatePage/UserTranslatePage';
-import PromptSelection from './components/PromptSelection';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { withRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Login, Signup } from "./components/AuthForm";
+import Home from "./components/Home";
+import { me } from "./store";
+import UserTranslatePage from "./components/UserTranslatePage/UserTranslatePage";
+import PromptSelection from "./components/PromptSelection";
+import Watson from "./Watson";
 
 /**
  * COMPONENT
