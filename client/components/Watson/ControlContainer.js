@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Dropdown, FormGroup, TextArea, Tile, Toggle } from "@carbon/react";
 import SubmitContainer from "./SubmitContainer";
-import models from "../../models.json";
+import models from "./models.json";
 
 export const ControlContainer = ({
   isRecording,

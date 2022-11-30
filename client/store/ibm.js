@@ -19,54 +19,79 @@ export const actionTypes = {
 /**
  * ACTION CREATORS
  */
-const setAudioAnalyzer = (audioAnalyzer) => ({
-  type: setAudioAnalyzer,
-  audioAnalyzer,
-});
-const setAudioContext = (audioContext) => ({
-  type: setAudioContext,
-  audioContext,
-});
-const setAudioSource = (source) => ({
-  type: setAudioSource,
-  source,
-});
-const setAudioStream = (stream) => ({
-  type: setAudioStream,
-  stream,
-});
-const setAudioVisualization = (visual) => ({
-  type: setAudioVisualization,
-  visual,
-});
-const setError = (err) => ({
-  type: setError,
-  err,
-});
-const setSpeakerLabels = (label) => ({
-  type: setSpeakerLabels,
-  label,
-});
-const setIsRecording = (isRecording) => ({
-  type: setIsRecording,
-  isRecording,
-});
-const setIsSamplePlaying = (isPlaying) => ({
-  type: setIsSamplePlaying,
-  isPlaying,
-});
-const setIsTranscribing = (isTranscribing) => ({
-  type: setAudioAnalyzer,
-  isTranscribing,
-});
-const setIsUploadPlaying = (upload) => ({
-  type: setIsUploadPlaying,
-  upload,
-});
-const updateResults = (result) => ({
-  type: updateResults,
-  result,
-});
+export const setAudioAnalyzer = (audioAnalyzer) => {
+  return {
+    type: setAudioAnalyzer,
+    audioAnalyzer,
+  };
+};
+export const setAudioContext = (audioContext) => {
+  return {
+    type: setAudioContext,
+    audioContext,
+  };
+};
+export const setAudioSource = (source) => {
+  return {
+    type: setAudioSource,
+    source,
+  };
+};
+export const setAudioStream = (stream) => {
+  return {
+    type: setAudioStream,
+    stream,
+  };
+};
+export const setAudioVisualization = (audioDataArray, audioDurationInMs) => {
+  return {
+    type: setAudioVisualization,
+    audioDataArray,
+    audioDurationInMs,
+  };
+};
+export const setError = (err) => {
+  return {
+    type: setError,
+    err,
+  };
+};
+export const setSpeakerLabels = (label) => {
+  return {
+    type: setSpeakerLabels,
+    label,
+  };
+};
+export const setIsRecording = (isRecording) => {
+  return {
+    type: setIsRecording,
+    isRecording,
+  };
+};
+export const setIsSamplePlaying = (isPlaying) => {
+  return {
+    type: setIsSamplePlaying,
+    isPlaying,
+  };
+};
+export const setIsTranscribing = (isTranscribing) => {
+  return {
+    type: setAudioAnalyzer,
+    isTranscribing,
+  };
+};
+export const setIsUploadPlaying = (upload) => {
+  return {
+    type: setIsUploadPlaying,
+    upload,
+  };
+};
+export const updateResults = (result) => {
+  return {
+    type: updateResults,
+    result,
+  };
+};
 
 /**
  * THUNK CREATORS
@@ -95,30 +120,29 @@ export const initialState = {
  */
 export const ibmReducer = (state = initialState, action) => {
   switch (action.type) {
-    case setAudioAnalyzer:
+    case "SET_AUDIO_ANALYZER":
       return { ...state, audioAnalyzer: action.audioAnalyzer };
-    case setAudioContext:
-      console.log("Printing context test!!");
+    case "SET_AUDIO_CONTEXT":
       return { ...state, audioContext: action.audioContext };
-    case setAudioSource:
+    case "SET_AUDIO_SOURCE":
       return { ...state, source: action.source };
-    case setAudioStream:
+    case "SET_AUDIO_STREAM":
       return { ...state, stream: action.stream };
-    case setAudioVisualization:
+    case "SET_AUDIO_VISUALIZATION_DATA":
       return { ...state, visual: action.visual };
-    case setError:
+    case "SET_ERROR":
       return action.err;
-    case setSpeakerLabels:
+    case "SET_SPEAKER_LABELS":
       return action.label;
-    case setIsRecording:
+    case "SET_IS_RECORDING":
       return action.isRecording;
-    case setIsSamplePlaying:
+    case "SET_IS_SAMPLE_PLAYING":
       return action.isPlaying;
-    case setIsTranscribing:
+    case "SET_IS_TRANSCRIBING":
       return action.isTranscribing;
-    case setIsUploadPlaying:
+    case "SET_IS_UPLOAD_PLAYING":
       return action.upload;
-    case updateResults: {
+    case "UPDATE_RESULTS": {
       let updatedTranscript = [...state.transcript];
       if (action.resultIndex === 0) {
         updatedTranscript = action.transcript;

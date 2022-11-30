@@ -36,7 +36,7 @@ export const OutputContainer = ({
 );
 
 OutputContainer.propTypes = {
-  audioAnalyzer: PropTypes.object.isRequired,
+  // audioAnalyzer: PropTypes.object.isRequired,
   audioDataArray: PropTypes.arrayOf(PropTypes.number),
   audioDuration: PropTypes.number,
   audioSource: PropTypes.string,

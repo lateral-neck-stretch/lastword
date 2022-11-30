@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Button, FileUploaderButton } from "@carbon/react";
 import fetch from "isomorphic-fetch";
-import models from "../../models.json";
+import models from "./models.json";
 
 export const SubmitContainer = ({
   isRecording,
