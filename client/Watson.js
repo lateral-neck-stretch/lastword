@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
 import ServiceContainer from "./components/Watson/ServiceContainer";
 import { getAns } from "./store/watson";
 
@@ -7,10 +6,6 @@ import { getAns } from "./store/watson";
  * Watson template github: https://github.com/IBM/speech-to-text-code-pattern/tree/fbb5a38731f8b16e4f88a880a19694f81a35712b
  */
 const Watson = () => {
-  const dispatch = useDispatch();
-  const revealAnswer = () => {
-    return dispatch(getAns());
-  };
   return (
     <div>
       <h2>Placeholder for Watson</h2>

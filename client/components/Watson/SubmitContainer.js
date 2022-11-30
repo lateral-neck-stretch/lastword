@@ -36,7 +36,6 @@ export const SubmitContainer = ({
     let authJson;
     authResponse = await fetch("/auth/watson/token");
     authJson = await authResponse.json();
-    console.log("Printing authJson: ", authJson);
     if (!authResponse.ok) {
       onError(authJson);
       return {
