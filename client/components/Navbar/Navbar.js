@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 function Navbar(props) {
     const { handleLogout, isLoggedIn } = props;
     return (
-        <nav className={styles.navbar}>
-            <span className={styles.logo}>LOGO</span>
-            <ul className={styles.navbar_list}>
+        <nav className="navbar">
+            <span className="logo">LOGO</span>
+            <ul className={"navbar_list"}>
                 {isLoggedIn ? (
                     <li className='navbar_list_item'>
                         <button onClick={handleLogout}>Logout</button>
@@ -23,7 +23,7 @@ function Navbar(props) {
                     <Link to="/Watson">Watson</Link>
                 </li>
                 <li className='navbar_list_item'>
-                    <p>Profile <span>R</span></p>
+                    <Link to="/profile">Profile</Link>
                 </li>
             </ul>
         </nav>
