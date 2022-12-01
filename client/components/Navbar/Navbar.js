@@ -20,6 +20,9 @@ function Navbar(props) {
                 )
                 }
                 <li className='navbar_list_item'>
+                    <Link to="/Watson">Watson</Link>
+                </li>
+                <li className='navbar_list_item'>
                     <p>Profile <span>R</span></p>
                 </li>
             </ul>

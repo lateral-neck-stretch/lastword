@@ -24,7 +24,7 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            {/* <Route path="/watson" component={Watson} /> */}
+            <Route path="/watson" component={Watson} />
             <Route path="/home" component={Home} />
             <Route path="/LandingPage" component={LandingPage} />
             <Route path="/prompts/:id" component={UserTranslatePage} />
