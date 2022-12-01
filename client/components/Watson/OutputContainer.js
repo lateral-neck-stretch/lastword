@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import { Button, FormGroup, Tile } from "@carbon/react";
 import fetch from "isomorphic-fetch";
 import AudioWave from "./AudioWave";
 import TranscriptBox from "./TranscriptBox";
+import { setTranscript } from "../../store/watson";
 
 export const OutputContainer = ({
   audioAnalyzer,
@@ -15,8 +17,9 @@ export const OutputContainer = ({
   keywordInfo,
   transcriptArray,
 }) => {
-  const submitTranscript = async () => {
-    console.log("Printing transcript: ", transcriptArray);
+  // Use for fetches to server
+  /**
+   * console.log("Printing transcript: ", transcriptArray);
     if (transcriptArray.length > 0) {
       await fetch("/api/prompts", {
         method: "POST",
@@ -32,6 +35,10 @@ export const OutputContainer = ({
           console.error(err);
         });
     }
+   */
+  const dispatch = useDispatch();
+  const submitTranscript = async () => {
+    dispatch(setTranscript(transcriptArray));
   };
   return (
     <Tile className="output-container">
