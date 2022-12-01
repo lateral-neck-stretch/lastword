@@ -8,6 +8,7 @@ import UserTranslatePage from "./components/UserTranslatePage/UserTranslatePage"
 import PromptSelection from "./components/PromptSelection";
 import Watson from "./Watson";
 import Results from "./components/Results";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 /**
  * COMPONENT
@@ -24,8 +25,9 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            {/* <Route path="/watson" component={Watson} /> */}
+            <Route path="/watson" component={Watson} />
             <Route path="/home" component={Home} />
+            <Route path="/LandingPage" component={LandingPage} />
             <Route path="/prompts/:id" component={UserTranslatePage} />
             <Route path="/prompts" component={PromptSelection} />
             <Route path="/results" component={Results} />
