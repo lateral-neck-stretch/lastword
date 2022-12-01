@@ -5,6 +5,7 @@ const {
 } = require("../db");
 
 router.use("/watson", require("./watson"));
+router.use("/twinwords", require("./twinwords"));
 
 module.exports = router;
 
