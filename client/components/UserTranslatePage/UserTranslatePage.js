@@ -40,14 +40,14 @@ function UserTranslatePage(props) {
         </div>
       </section>
       <ServiceContainer />
-      <button
+      {/* <button
         onClick={() => {
           setSubmit(true);
         }}
       >
         Submit
-      </button>
-      {submit ? (
+      </button> */}
+      {transcribed.length ? (
         <Redirect
           to={{
             pathname: "/results",
