@@ -11,9 +11,11 @@
 }
 .navbar_list{
     display: flex;
+    margin: 0;
     align-items: center;
     justify-content: space-between;
-    width: 30vw;
+    max-width: 30vw;
+    min-width: fit-content;
     list-style-type: none;
     color: white;
 }
