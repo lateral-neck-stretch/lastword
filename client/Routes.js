@@ -6,7 +6,6 @@ import Home from "./components/Home";
 import { me } from "./store";
 import UserTranslatePage from "./components/UserTranslatePage/UserTranslatePage";
 import PromptSelection from "./components/PromptSelection";
-import Watson from "./Watson";
 import Results from "./components/Results";
 import LandingPage from "./components/LandingPage/LandingPage";
 
@@ -25,7 +24,6 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route path="/watson" component={Watson} />
             <Route path="/home" component={Home} />
             <Route path="/LandingPage" component={LandingPage} />
             <Route path="/prompts/:id" component={UserTranslatePage} />
@@ -38,7 +36,6 @@ class Routes extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/watson" component={Watson} />
           </Switch>
         )}
       </div>

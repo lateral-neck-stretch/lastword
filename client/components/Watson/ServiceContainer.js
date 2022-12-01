@@ -22,6 +22,9 @@ const AUDIO_TRANSCRIPTION_ERROR_DESCRIPTION =
 const GDPR_DISCLAIMER =
   "This system is for demonstration purposes only and is not intended to process Personal Data. No Personal Data is to be entered into this system as it may not have the necessary controls in place to meet the requirements of the General Data Protection Regulation (EU) 2016/679.";
 
+/**
+ * Watson template github: https://github.com/IBM/speech-to-text-code-pattern/tree/fbb5a38731f8b16e4f88a880a19694f81a35712b
+ */
 export const ServiceContainer = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const audioWaveContainerRef = useRef(null);
