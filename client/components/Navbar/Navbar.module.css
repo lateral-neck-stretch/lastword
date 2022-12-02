@@ -10,6 +10,14 @@
     height: auto;
     max-height: 100px;
 }
-.tabs{
-    justify-content: flex-end;
+
+.navbar_list{
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 30vw;
+    min-width: fit-content;
+    list-style-type: none;
+    color: white;
 }

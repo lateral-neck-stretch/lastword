@@ -62,9 +62,9 @@ function PromptSelection(props) {
     prompts.sort((a, b) => (a.difficulty > b.difficulty ? -1 : 1));
   }
 
-  console.log(topic);
-  if (topic !== "All") {
-    prompts = prompts.filter((prompt) => prompt.topic === topic);
+
+  if (topic !== 'All') {
+    prompts = prompts.filter(prompt => prompt.topic === topic)
   }
 
   return (

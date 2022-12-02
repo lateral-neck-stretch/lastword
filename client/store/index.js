@@ -6,8 +6,9 @@ import auth from "./auth";
 import prompt from "./prompt";
 import prompts from "./prompts";
 import usersReducer from "./users";
+import transcript from "./watson";
 
-const reducer = combineReducers({ auth, prompt, prompts, usersReducer });
+const reducer = combineReducers({ auth, prompt, prompts, transcript, usersReducer });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );
