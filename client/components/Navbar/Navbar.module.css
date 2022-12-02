@@ -7,16 +7,9 @@
     padding: 0px 60px;
 }
 .logo{
-    color: white;
+    height: auto;
+    max-height: 100px;
 }
-.navbar_list{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 30vw;
-    list-style-type: none;
-    color: white;
-}
-.navbar_list_item{
-    
+.tabs{
+    justify-content: flex-end;
 }

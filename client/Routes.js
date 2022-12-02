@@ -7,6 +7,8 @@ import { me } from "./store";
 import UserTranslatePage from "./components/UserTranslatePage/UserTranslatePage";
 import PromptSelection from "./components/PromptSelection";
 import Watson from "./Watson";
+import UserProfile from "./components/UserProfile/UserProfile";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 
 /**
  * COMPONENT
@@ -27,7 +29,9 @@ class Routes extends Component {
             <Route path="/home" component={Home} />
             <Route path="/prompts/:id" component={UserTranslatePage} />
             <Route path="/prompts" component={PromptSelection} />
-            <Redirect to="/home" />
+            <Route exact path="/myprofile" component={UserProfile} />
+            {/* <Route path="/myprofile" component={Home} /> */}
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         ) : (
           <Switch>
@@ -35,6 +39,7 @@ class Routes extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/watson" component={Watson} />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         )}
       </div>
