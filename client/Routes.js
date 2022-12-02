@@ -33,14 +33,14 @@ class Routes extends Component {
             <Route exact path="/myprofile" component={UserProfile} />
             <Route path="/results" component={Results} />
             <Route path="/error" component={NotFoundPage} />
-            <Redirect to="/error" />
+            {/* <Redirect to="/error" /> */}
           </Switch>
         ) : (
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="*" component={NotFoundPage} />
+            <Route path="/*" component={NotFoundPage} />
           </Switch>
         )}
       </div>

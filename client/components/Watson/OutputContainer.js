@@ -17,25 +17,6 @@ export const OutputContainer = ({
   keywordInfo,
   transcriptArray,
 }) => {
-  // Use for fetches to server
-  /**
-   * console.log("Printing transcript: ", transcriptArray);
-    if (transcriptArray.length > 0) {
-      await fetch("/api/prompts", {
-        method: "POST",
-        body: JSON.stringify(transcriptArray[0]),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then(function (response) {
-          if (response) {
-            return response.json();
-          }
-        })
-        .catch(function (err) {
-          console.error(err);
-        });
-    }
-   */
   const dispatch = useDispatch();
   const submitTranscript = async () => {
     dispatch(setTranscript(transcriptArray));
