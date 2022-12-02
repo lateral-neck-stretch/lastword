@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "public"),
     filename: "bundle.js",
+    publicPath: "/",
   },
   mode: "development",
   plugins: [
@@ -30,7 +31,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx|ts|tsx)$/,
+        test: /\.(js|jsx|ts|tsx|png)$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
@@ -43,7 +44,7 @@ module.exports = {
         loader: "css-loader",
       },
       {
-        test: /\.(flac|mp3)$/i,
+        test: /\.(flac|mp3|png)$/i,
         loader: "file-loader",
       },
     ],

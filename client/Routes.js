@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import { me } from "./store";
 import UserTranslatePage from "./components/UserTranslatePage/UserTranslatePage";
 import PromptSelection from "./components/PromptSelection";
+import UserProfile from "./components/UserProfile/UserProfile";
 import Results from "./components/Results";
 import LandingPage from "./components/LandingPage/LandingPage";
 
@@ -28,6 +29,9 @@ class Routes extends Component {
             <Route path="/LandingPage" component={LandingPage} />
             <Route path="/prompts/:id" component={UserTranslatePage} />
             <Route path="/prompts" component={PromptSelection} />
+            <Route exact path="/myprofile" component={UserProfile} />
+            {/* <Route path="/myprofile" component={Home} /> */}
+            <Route path="*" component={NotFoundPage} />
             <Route path="/results" component={Results} />
             <Redirect to="/home" />
           </Switch>
@@ -36,6 +40,8 @@ class Routes extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/watson" component={Watson} />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         )}
       </div>
