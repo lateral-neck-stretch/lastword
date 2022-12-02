@@ -34,9 +34,9 @@ export const fetchUsers = (token) => {
   };
 };
 
-export const fetchSingleUser = (id, token) => {
+export const fetchSingleUser = (token) => {
   return async (dispatch) => {
-    const response = await axios.get(`/api/users/${id}`, {
+    const response = await axios.get(`/api/users/user`, {
       headers: { authorization: token },
     });
     return dispatch(singleUser(response.data));

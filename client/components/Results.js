@@ -14,7 +14,6 @@ function Results(props) {
     const func = async () => {
       const usableTranscript = props.location.state.transcript.join(" ");
       const { data } = await axios.get("/auth/twinwords");
-      console.log("Printing response: ", data);
       const options = {
         method: "GET",
         url: "https://twinword-text-similarity-v1.p.rapidapi.com/similarity/",

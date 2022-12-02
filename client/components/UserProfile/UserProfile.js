@@ -12,7 +12,7 @@ function UserProfile(props) {
 
   React.useEffect(() => {
     console.log("props", props);
-    const user = props.fetchSingleUser(props.match.params.id, token);
+    const user = props.fetchSingleUser(token);
     console.log("user", user);
   }, []);
 
@@ -23,7 +23,7 @@ function UserProfile(props) {
       {/* ///USER AVATAR/// */}
       <Avatar
         alt="user_avatar"
-        src="fluffy-waffle/public/triceratops_avatar.png"
+        src="/triceratops_avatar.png"
         sx={{ width: 100, height: 100 }}
       />
     </div>
