@@ -40,7 +40,7 @@ const User = db.define("user", {
   },
   userAvatar: {
     type: Sequelize.STRING,
-    defaultValue: "fluffy-waffle/public/triceratops_avatar.png",
+    defaultValue: "public/triceratops_avatar.png",
   },
 });
 
