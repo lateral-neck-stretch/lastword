@@ -50,6 +50,7 @@
     "path-browserify": "^1.0.1",
     "pg": "^8.5.1",
     "querystring-es3": "^0.2.1",
+    "redux": "^4.2.0",
     "sequelize": "^6.3.5",
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
