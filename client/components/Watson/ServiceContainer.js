@@ -180,7 +180,6 @@ export const ServiceContainer = () => {
           ),
           type: actionTypes.setError,
         });
-
         handleStreamEnd();
       });
 
