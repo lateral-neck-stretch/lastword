@@ -12,11 +12,11 @@ const Prompt = db.define('prompt', {
     allowNull: false,
   },
   content: {
-    type: Sequelize.TEXT,
+    type: Sequelize.ARRAY(Sequelize.TEXT),
     allowNull: false,
   },
   key: {
-    type: Sequelize.TEXT,
+    type: Sequelize.ARRAY(Sequelize.TEXT),
     allowNull: false,
   },
   difficulty: {
@@ -30,6 +30,9 @@ const Prompt = db.define('prompt', {
   topic: {
     type: Sequelize.STRING,
     allowNull: false,
+  },
+  vocabulary: {
+    type: Sequelize.JSON,
   }
 })
 

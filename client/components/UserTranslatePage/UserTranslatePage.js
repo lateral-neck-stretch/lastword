@@ -7,9 +7,11 @@ import ServiceContainer from "../Watson/ServiceContainer";
 
 function UserTranslatePage(props) {
   const [submit, setSubmit] = useState(false);
+
   useEffect(() => {
     props.getPrompt(props.match.params.id);
   }, []);
+
   const { transcript } = useSelector((state) => state);
   const transcribed = transcript.map((elem) => {
     return elem.text;
@@ -51,7 +53,7 @@ function UserTranslatePage(props) {
         <Redirect
           to={{
             pathname: "/results",
-            state: { key: props.prompt.key, transcript: transcribed },
+            state: { key: props.prompt.key, transcript: transcribed, vocabulary: props.prompt.vocabulary },
           }}
         />
       ) : null}
