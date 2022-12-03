@@ -40,8 +40,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSingleUser: (id, token) => {
-      dispatch(fetchSingleUser(id, token));
+    fetchSingleUser: (token) => {
+      dispatch(fetchSingleUser(token));
     },
   };
 };

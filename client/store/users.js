@@ -4,6 +4,7 @@ import history from "../history";
 //action types
 const SET_USERS = "SET_USERS";
 const SINGLE_USER = "SINGLE_USER";
+const SET_USER_RESULTS = "SET_USER_RESULTS";
 
 let initialState = [];
 
@@ -22,6 +23,13 @@ export const singleUser = (user) => {
   };
 };
 
+export const setUserResults = (userResults) => {
+  return {
+    type: SET_USER_RESULTS,
+    userResults,
+  };
+};
+
 // thunk creators
 export const fetchUsers = (token) => {
   return async (dispatch) => {
@@ -36,10 +44,21 @@ export const fetchUsers = (token) => {
 
 export const fetchSingleUser = (token) => {
   return async (dispatch) => {
-    const response = await axios.get(`/api/users/user`, {
+    const response = await axios.get("/api/users/user", {
       headers: { authorization: token },
     });
+    history.push("/myprofile");
     return dispatch(singleUser(response.data));
+  };
+};
+
+export const getUserResults = () => {
+  return async (dispatch) => {
+    const token = window.localStorage.getItem("TOKEN");
+    const { data } = await axios.get("/api/user/user/results", {
+      headers: { authorization: token },
+    });
+    dispatch(setUserResults(data));
   };
 };
 
@@ -51,6 +70,8 @@ export default function usersReducer(state = initialState, action) {
       return [...action.users];
     case SINGLE_USER:
       return [action.user];
+    case SET_USER_RESULTS:
+      return action.userResults;
     default:
       return state;
   }
