@@ -1,14 +1,14 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
-const UserResults = db.define("user", {
+const UserResults = db.define("userResults", {
+  Date: {
+    type: Sequelize.DATE,
+  },
   overallScore: {
     type: Sequelize.JSON,
   },
   timerScore: {
-    type: Sequelize.JSON,
-  },
-  topicScores: {
     type: Sequelize.JSON,
   },
   vocabScore: {

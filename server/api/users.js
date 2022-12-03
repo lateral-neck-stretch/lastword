@@ -1,3 +1,4 @@
+const Sequelize = require("sequelize");
 const router = require("express").Router();
 const {
   models: { User },
@@ -68,8 +69,8 @@ router.get("/user", requireUserToken, async (req, res, next) => {
 // GET /api/users/user/results
 router.get("/user/results", requireUserToken, async (req, res, next) => {
   try {
-    const user = User.findByPk(req.user.id);
-    const userResults = user.getResults();
+    const user = await User.findByPk(req.user.id);
+    const userResults = user.getUserResults();
     res.json(userResults);
   } catch (err) {
     next(err);
