@@ -16,7 +16,6 @@ const setPrompts = (prompts) => ({ type: SET_PROMPTS, prompts });
  */
 export const getPrompts = () => async (dispatch) => {
   const res = await axios.get(`/api/prompts`);
-  history.push("/prompts");
   return dispatch(setPrompts(res.data));
 };
 

@@ -47,6 +47,7 @@ export const fetchSingleUser = (token) => {
     const response = await axios.get("/api/users/user", {
       headers: { authorization: token },
     });
+    history.push("/myprofile");
     return dispatch(singleUser(response.data));
   };
 };

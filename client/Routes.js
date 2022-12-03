@@ -31,7 +31,7 @@ class Routes extends Component {
             <Route path='/LandingPage' component={LandingPage} />
             <Route path='/prompts/:id' component={UserTranslatePage} />
             <Route path='/prompts' component={PromptSelection} />
-            <Route path='/myprofile/results' component={UserResults} />
+            <Route path='/myprofile/userResults' component={UserResults} />
             <Route exact path='/myprofile' component={UserProfile} />
             <Route path='/results' component={Results} />
             <Route path='/error' component={NotFoundPage} />
