@@ -64,3 +64,14 @@ router.get("/user", requireUserToken, async (req, res, next) => {
     next(e);
   }
 });
+
+// GET /api/users/user/results
+router.get("/user/results", requireUserToken, async (req, res, next) => {
+  try {
+    const user = User.findByPk(req.user.id);
+    const userResults = user.getResults();
+    res.json(userResults);
+  } catch (err) {
+    next(err);
+  }
+});
