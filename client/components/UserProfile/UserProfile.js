@@ -22,8 +22,8 @@ function UserProfile(props) {
 
       {/* ///USER AVATAR/// */}
       <Avatar
-        alt="user_avatar"
-        src="/triceratops_avatar.png"
+        alt='user_avatar'
+        src={userAvatar}
         sx={{ width: 100, height: 100 }}
       />
     </div>
