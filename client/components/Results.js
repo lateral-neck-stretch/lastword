@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, connect } from "react-redux";
 import { setTranscript } from "../store/watson";
-import fetch from "isomorphic-fetch";
+import { postResult } from "../store/result"
 
 function Results(props) {
   /// Probably just get transcript through props
@@ -55,11 +55,14 @@ function Results(props) {
     let vocabObject = JSON.parse(props.location.state.vocabulary)
     let joinedTranscript = props.location.state.transcript.join("").toLowerCase()
     let vocabWords = Object.keys(vocabObject)
-    vocabWords.forEach((word) => {
+    let vocabScores = vocabWords.map((word) => {
       let translationArray = vocabObject[word]
-      let vocabScores = translationArray.map((translatedWord) => {
-        return joinedTranscript.includes(translatedWord.toLowerCase())}
-      )
+      translationArray.forEach((translatedWord) => {
+        if(joinedTranscript.includes(translatedWord.toLowerCase())) {
+          return true
+        }
+      }
+      )})
     let finalScores = vocabScores.map((binary) => {
       if (binary === true) {
         return 1
@@ -68,14 +71,24 @@ function Results(props) {
       }
     })
       setVocab(finalScores)
-    })
-  }, [])
+    }, [])
+
+  useEffect(() => {
+    if (result && vocab) {
+      const token = window.localStorage.getItem("token");
+      let apiScore = Math.floor(result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length * 100)
+      let vocabScore = Math.floor(vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length * 100)
+      let overallScore = Math.floor((apiScore + vocabScore) / 2)
+      props.postResult(overallScore, vocabScore, apiScore, 1, props.location.state.id, token)
+    }
+  }, [result, vocab])
+  console.log(props.result)
 
   return (
     <div>
       <h1>Results:</h1>
       <div>{(result) ? ("Translation score: " + (result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length) * 100 + "%") : (null)}</div>
-      <div>{(result) ? ("Vocabulary score: " + (vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length) * 100 + "%") : (null)}</div>
+      <div>{(vocab) ? ("Vocabulary score: " + (vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length) * 100 + "%") : (null)}</div>
       <p>
         {props.location.state.transcript}
       </p>
@@ -83,4 +96,16 @@ function Results(props) {
   );
 }
 
-export default Results;
+const mapState = (state) => {
+  return {
+    result: state.result
+  }
+}
+
+const mapDispatch = (dispatch) => {
+  return {
+    postResult: (overallScore, vocabScore, similarityScore, timerScore, id, token) => {dispatch(postResult(overallScore, vocabScore, similarityScore, timerScore, id, token))}
+  }
+}
+
+export default connect(mapState, mapDispatch)(Results);

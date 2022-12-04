@@ -4,19 +4,19 @@ const db = require("./db");
 
 const User = require("./models/User");
 const Prompt = require("./models/Prompt");
-const UserResults = require("./models/UserResults");
+const UserResult = require("./models/UserResult");
 
 //associations could go here!
-User.hasMany(UserResults);
-UserResults.belongsTo(User);
-Prompt.hasMany(UserResults);
-UserResults.belongsTo(Prompt);
+User.hasMany(UserResult);
+UserResult.belongsTo(User);
+Prompt.hasMany(UserResult);
+UserResult.belongsTo(Prompt);
 
 module.exports = {
   db,
   models: {
     User,
     Prompt,
-    UserResults,
+    UserResult,
   },
 };
