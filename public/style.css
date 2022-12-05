@@ -1,6 +1,8 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Roboto Mono', monospace;
+  background: linear-gradient(112.87deg, rgba(20, 139, 125, 0.903125) -11.18%, rgba(8, 69, 62, 0.8) -11.16%, rgba(10, 68, 155, 0.8) 125.44%);
+
 }
 a {
   text-decoration: none;

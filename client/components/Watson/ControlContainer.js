@@ -45,7 +45,7 @@ export const ControlContainer = ({
   return (
     <Tile className="control-container">
       <h3 className="container-title">Input</h3>
-      <FormGroup legendText="Language model">
+      {/* <FormGroup legendText="Language model">
         <Dropdown
           id="language-model-dropdown"
           label="Select a language model"
@@ -55,8 +55,8 @@ export const ControlContainer = ({
           ariaLabel="Language selection dropdown"
           light
         />
-      </FormGroup>
-      <FormGroup legendText="Keywords to spot">
+      </FormGroup> */}
+      {/* <FormGroup legendText="Keywords to spot">
         <TextArea
           id="custom-keyword-input"
           labelText="Custom language keyword input"
@@ -69,8 +69,8 @@ export const ControlContainer = ({
           }}
           light
         />
-      </FormGroup>
-      <FormGroup legendText="Detect multiple speakers (only supported with sample audio)">
+      </FormGroup> */}
+      {/* <FormGroup legendText="Detect multiple speakers (only supported with sample audio)">
         <Toggle
           id="speaker-label-toggle"
           size="sm"
@@ -82,7 +82,7 @@ export const ControlContainer = ({
             setUseSpeakerLabels(!useSpeakerLabels);
           }}
         />
-      </FormGroup>
+      </FormGroup> */}
       <SubmitContainer
         isRecording={isRecording}
         isSamplePlaying={isSamplePlaying}
@@ -120,14 +120,14 @@ ControlContainer.defaultProps = {
   isRecording: false,
   isSamplePlaying: false,
   isUploadPlaying: false,
-  onError: () => {},
-  onSelectNewModel: () => {},
-  onStartPlayingFileUpload: () => {},
-  onStopPlayingFileUpload: () => {},
-  onStartPlayingSample: () => {},
-  onStopPlayingSample: () => {},
-  onStartRecording: () => {},
-  onStopRecording: () => {},
+  onError: () => { },
+  onSelectNewModel: () => { },
+  onStartPlayingFileUpload: () => { },
+  onStopPlayingFileUpload: () => { },
+  onStartPlayingSample: () => { },
+  onStopPlayingSample: () => { },
+  onStartRecording: () => { },
+  onStopRecording: () => { },
 };
 
 export default ControlContainer;

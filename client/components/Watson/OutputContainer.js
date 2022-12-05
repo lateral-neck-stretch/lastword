@@ -23,7 +23,7 @@ export const OutputContainer = ({
   };
   return (
     <Tile className="output-container">
-      <h3 className="container-title">Output</h3>
+      {/* <h3 className="container-title">Output</h3>
       <FormGroup legendText="Audio">
         <AudioWave
           audioWaveContainerRef={audioWaveContainerRef}
@@ -33,7 +33,7 @@ export const OutputContainer = ({
           audioSource={audioSource}
           audioAnalyzer={audioAnalyzer}
         />
-      </FormGroup>
+      </FormGroup> */}
       <FormGroup legendText="Transcript">
         <TranscriptBox
           keywordInfo={keywordInfo}
