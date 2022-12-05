@@ -68,43 +68,49 @@ function PromptSelection(props) {
   }
 
   return (
-    <div>
-      <InputLabel id="difficulty-select">Sort by difficulty</InputLabel>
-      <Select value={sortDifficulty} onChange={handleSortDifficultyChange}>
-        <MenuItem value={"ascending"}>Increasing</MenuItem>
-        <MenuItem value={"descending"}>Decreasing</MenuItem>
-      </Select>
-      <InputLabel id="difficulty-filter">Filter by difficulty</InputLabel>
-      <Select
-        value={difficulty}
-        onChange={handleDifficultyChange}
-        label="Difficulty filter"
-      >
-        <MenuItem value={"all"}>All</MenuItem>
-        <MenuItem value={"easy"}>Easy</MenuItem>
-        <MenuItem value={"medium"}>Medium</MenuItem>
-        <MenuItem value={"hard"}>Hard</MenuItem>
-      </Select>
-      <Autocomplete
-        disablePortal
-        value={topic}
-        id="topic-filter"
-        options={uniquePromptTopics}
-        sx={{ width: 300 }}
-        onChange={handleTopicChange}
-        renderInput={(params) => <TextField {...params} label="Topic" />}
-      />
-      {prompts.map((prompt) => {
-        return (
-          <div key={prompt.id}>
-            <Link className="title" to={`/prompts/${prompt.id}`}>
-              {prompt.title}
-            </Link>
-            <div className="difficulty">{prompt.difficulty}</div>
-            <div className="topic">{prompt.topic}</div>
-          </div>
-        );
-      })}
+    <div className="prompt-page">
+      <div className="prompt-control">
+        <InputLabel id="difficulty-select">Sort by difficulty</InputLabel>
+        <Select value={sortDifficulty} onChange={handleSortDifficultyChange}>
+          <MenuItem value={"ascending"}>Increasing</MenuItem>
+          <MenuItem value={"descending"}>Decreasing</MenuItem>
+        </Select>
+        <InputLabel id="difficulty-filter">Filter by difficulty</InputLabel>
+        <Select
+          value={difficulty}
+          onChange={handleDifficultyChange}
+          label="Difficulty filter"
+        >
+          <MenuItem value={"all"}>All</MenuItem>
+          <MenuItem value={"easy"}>Easy</MenuItem>
+          <MenuItem value={"medium"}>Medium</MenuItem>
+          <MenuItem value={"hard"}>Hard</MenuItem>
+        </Select>
+        <Autocomplete
+          disablePortal
+          value={topic}
+          id="topic-filter"
+          options={uniquePromptTopics}
+          sx={{ width: 300 }}
+          onChange={handleTopicChange}
+          renderInput={(params) => <TextField {...params} label="Topic" />}
+        />
+      </div>
+
+      <div className="prompt-list">
+        {prompts.map((prompt) => {
+          return (
+            <div key={prompt.id} className="prompt">
+              <Link className="title" to={`/prompts/${prompt.id}`}>
+                {prompt.title}
+              </Link>
+              <div className="difficulty">{prompt.difficulty}</div>
+              <div className="topic">{prompt.topic}</div>
+            </div>
+          );
+        })}
+      </div>
+
     </div>
   );
 }
