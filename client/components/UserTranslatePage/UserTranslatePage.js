@@ -53,7 +53,7 @@ function UserTranslatePage(props) {
         <Redirect
           to={{
             pathname: "/results",
-            state: { key: props.prompt.key, transcript: transcribed, vocabulary: props.prompt.vocabulary },
+            state: { key: props.prompt.key, transcript: transcribed, vocabulary: props.prompt.vocabulary, id: props.prompt.id },
           }}
         />
       ) : null}
