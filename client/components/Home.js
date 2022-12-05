@@ -8,9 +8,14 @@ import { Link } from "react-router-dom";
 export const Home = (props) => {
   const { username } = props;
   return (
-    <div>
-      <h3>Welcome, {username}</h3>
-      <Link to={"/prompts"}>View prompts</Link>
+    <div className="home-div">
+      <h3 className="home-header">Welcome, {username}</h3>
+      <p className="home-p">
+        Hi {username}, start working on your translating skills with LastWord's simple and intuitive learning method.
+      </p>
+      <Link
+        to={"/prompts"}
+        className="home-links">View prompts</Link>
     </div>
   );
 };

@@ -23,7 +23,7 @@ export const OutputContainer = ({
   };
   return (
     <Tile className="output-container">
-      <h3 className="container-title">Output</h3>
+      {/* <h3 className="container-title">Output</h3>
       <FormGroup legendText="Audio">
         <AudioWave
           audioWaveContainerRef={audioWaveContainerRef}
@@ -33,15 +33,15 @@ export const OutputContainer = ({
           audioSource={audioSource}
           audioAnalyzer={audioAnalyzer}
         />
-      </FormGroup>
-      <FormGroup legendText="Transcript">
+      </FormGroup> */}
+      <FormGroup legendText="Response" className="response">
         <TranscriptBox
           keywordInfo={keywordInfo}
           transcriptArray={transcriptArray}
         />
       </FormGroup>
       <Button
-        className="submit-transcript"
+        className="submit-transcript btn"
         kind="tertiary"
         onClick={submitTranscript}
       >
