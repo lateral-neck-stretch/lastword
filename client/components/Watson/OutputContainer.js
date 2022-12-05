@@ -34,14 +34,14 @@ export const OutputContainer = ({
           audioAnalyzer={audioAnalyzer}
         />
       </FormGroup> */}
-      <FormGroup legendText="Transcript">
+      <FormGroup legendText="Response" className="response">
         <TranscriptBox
           keywordInfo={keywordInfo}
           transcriptArray={transcriptArray}
         />
       </FormGroup>
       <Button
-        className="submit-transcript"
+        className="submit-transcript btn"
         kind="tertiary"
         onClick={submitTranscript}
       >

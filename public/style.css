@@ -87,3 +87,42 @@ form div {
     border-radius: 20px;
     color: white;
 }
+
+/* .submit-container{
+    background: rgba(0, 0, 0, 0.6);
+    width: 50%;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
+    padding: 1.5rem;
+    border-radius: 20px;
+    color: white;
+} */
+/* .output-container{
+  background: rgba(0, 0, 0, 0.6);
+    width: 50%;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
+    padding: 1.5rem;
+    border-radius: 20px;
+    color: white;
+} */
+.service-container{
+  background: rgba(0, 0, 0, 0.6);
+  width:30%;
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
+  padding: 1.5rem;
+  border-radius: 20px;
+  color: white;
+}
+.btn{
+  /* background: #1D3B4B; */
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+.record{
+  background: rgb(255, 124, 124);
+}
+.response{
+  padding: 1rem;
+  min-height: 5rem;
+  border-radius: 10px;
+}

@@ -26,12 +26,12 @@ function UserTranslatePage(props) {
             {props.prompt ? props.prompt.content : null}
           </p>
         </div>
-        <div className={`prompt_div , prompt_interaction`}>
+        {/* <div className={`prompt_div , prompt_interaction`}>
           <span className={"user_score"}>97/100</span>
           <p className={"record_audio_button"}>{">"}</p>
           <p className={"test_result"}>Try Again</p>
-        </div>
-        <div className={"speech_div"}>
+        </div> */}
+        {/* <div className={"speech_div"}>
           <span className={"speech_div_title"}>Response</span>
           <p className={"speech_div_response"}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
@@ -39,9 +39,10 @@ function UserTranslatePage(props) {
             at sapiente soluta suscipit? A dolorum consequatur odio aperiam
             asperiores eius quod modi.
           </p>
-        </div>
+        </div> */}
+        <ServiceContainer />
       </section>
-      <ServiceContainer />
+
       {/* <button
         onClick={() => {
           setSubmit(true);

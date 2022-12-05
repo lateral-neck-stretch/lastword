@@ -122,15 +122,15 @@ export const SubmitContainer = ({
       )} */}
       {isRecording ? (
         <Button
-          className="submit-button"
+          className="submit-button btn stop-record"
           kind="tertiary"
           onClick={onStopRecording}
         >
-          Stop recording
+          Stop Recording
         </Button>
       ) : (
         <Button
-          className="submit-button"
+          className="submit-button btn record"
           disabled={!modelName}
           kind="tertiary"
           onClick={async () => {
@@ -140,7 +140,7 @@ export const SubmitContainer = ({
             }
           }}
         >
-          Record your own
+          Record
         </Button>
       )}
       {/* {isUploadPlaying ? (
