@@ -149,9 +149,14 @@ function Navbar(props) {
             <button onClick={handleLogout}>Logout</button>
           </li>
         ) : (
-          <li className="navbar_list_item">
-            <Link to="/login">Login</Link>
-          </li>
+          <>
+            <li className="navbar_list_item">
+              <Link to="/login">Login</Link>
+            </li>
+            <li className="navbar_list_item">
+              <Link to="/signup">Sign Up</Link>
+            </li>
+          </>
         )}
         <li className="navbar_list_item">
           <Link to="/prompts">Prompts</Link>
