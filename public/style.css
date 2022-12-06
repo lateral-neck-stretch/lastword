@@ -172,6 +172,10 @@ form div {
   padding: 1rem;
   min-width: 300px;
 }
+.prompt:hover{
+  transform: scale(1.05);
+  transition: .3s ease-in-out;
+}
 .title{
   color: white;
   font-weight: 500;
