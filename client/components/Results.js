@@ -73,7 +73,7 @@ function Results(props) {
   useEffect(() => {
     if (result && vocab) {
       const token = window.localStorage.getItem("token");
-      let apiScore = Math.floor(result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length * 100 * (result.length / props.location.state.length))
+      let apiScore = Math.floor(result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length) * 100 * (result.length / props.location.state.key.length)
       let vocabScore = Math.floor(vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length * 100)
       let overallScore = Math.floor((apiScore + vocabScore) / 2)
       props.postResult(overallScore, vocabScore, apiScore, 1, props.location.state.id, token)
