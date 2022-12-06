@@ -91,23 +91,6 @@ form div {
     border-radius: 20px;
     color: white;
 }
-
-/* .submit-container{
-    background: rgba(0, 0, 0, 0.6);
-    width: 50%;
-    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
-    padding: 1.5rem;
-    border-radius: 20px;
-    color: white;
-} */
-/* .output-container{
-  background: rgba(0, 0, 0, 0.6);
-    width: 50%;
-    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
-    padding: 1.5rem;
-    border-radius: 20px;
-    color: white;
-} */
 .service-container{
   width:30%;
   background: rgba(0, 0, 0, 0.6);
@@ -137,6 +120,21 @@ form div {
   padding: 1rem;
   border-radius: 10px;
   margin: 30px 10%;
+
+}
+.home-div, .prompt-control, .prompt, .service-container, .prompt_div{
+    animation-duration: 1s;
+  animation-name: slideIn;
+}
+@keyframes slideIn{
+  0%{
+    opacity: 0;
+    translate: 0px 20px;
+  }
+  100%{
+    opacity: 1;
+    translate: 0px 0px;
+  }
 }
 .home-header{
   font-size: 2rem; 
