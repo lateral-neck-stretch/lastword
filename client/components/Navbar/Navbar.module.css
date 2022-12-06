@@ -1,14 +1,14 @@
 .navbar{
     display: flex;
     height: 68px;
-    background: rgba(0, 0, 0, 0.7);
+    background: transparent;
     justify-content: space-between;
     align-items: center;
     padding: 0px 60px;
 }
+
 .logo{
-    height: auto;
-    max-height: 100px;
+    height: 60px;
 }
 
 .navbar_list{
