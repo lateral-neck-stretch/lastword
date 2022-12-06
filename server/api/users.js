@@ -72,7 +72,6 @@ router.get("/user/results", requireUserToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
     const userResults = await user.getUserResults();
-    console.log("Printing user results: ", userResults);
     res.json(userResults);
   } catch (err) {
     next(err);

@@ -13,20 +13,20 @@ export const setUserResults = (userResults) => {
 };
 
 // Thunk creators
-export const getUserResults = () => {
+export const getUserResults = (token) => {
   return async (dispatch) => {
-    const token = window.localStorage.getItem("token");
     const { data } = await axios.get("/api/users/user/results", {
       headers: { authorization: token },
     });
     dispatch(setUserResults(data));
+    history.push("/myprofile");
   };
 };
 
 export default function userResults(state = [], action) {
   switch (action.type) {
     case SET_USER_RESULTS:
-      return [...state, action.userResults];
+      return [...state, ...action.userResults];
     default:
       return state;
   }

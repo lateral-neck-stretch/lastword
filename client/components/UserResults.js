@@ -5,9 +5,9 @@ import { getUserResults } from "../store/userResults";
 export const UserResults = () => {
   const dispatch = useDispatch();
   const { userResults } = useSelector((state) => state);
-  console.log("Printing userResults: >> ", userResults);
   useEffect(() => {
-    dispatch(getUserResults());
+    const token = window.localStorage.getItem("token");
+    dispatch(getUserResults(token));
   }, []);
   return (
     <div>
@@ -18,15 +18,11 @@ export const UserResults = () => {
           {userResults.map((result, index) => {
             return (
               <li key={index}>
-                <p key={result.id}>
-                  Topic similarity: {result.similarityScore}%
-                </p>
+                <p>Topic similarity: {result.similarityScore}%</p>
 
-                <p key={result.id}>
-                  Vocabulary correctness: {result.vocabScore}%
-                </p>
-                <p key={result.id}>Time Bonus: {result.timerScore}%</p>
-                <p key={result.id}>Total: {result.overallScore}</p>
+                <p>Vocabulary correctness: {result.vocabScore}%</p>
+                <p>Time Bonus: {result.timerScore}%</p>
+                <p>Total: {result.overallScore}</p>
               </li>
             );
           })}
