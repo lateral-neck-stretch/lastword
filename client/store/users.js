@@ -4,7 +4,6 @@ import history from "../history";
 //action types
 const SET_USERS = "SET_USERS";
 const SINGLE_USER = "SINGLE_USER";
-const SET_USER_RESULTS = "SET_USER_RESULTS";
 
 let initialState = [];
 
@@ -20,13 +19,6 @@ export const singleUser = (user) => {
   return {
     type: SINGLE_USER,
     user,
-  };
-};
-
-export const setUserResults = (userResults) => {
-  return {
-    type: SET_USER_RESULTS,
-    userResults,
   };
 };
 
@@ -52,16 +44,6 @@ export const fetchSingleUser = (token) => {
   };
 };
 
-export const getUserResults = () => {
-  return async (dispatch) => {
-    const token = window.localStorage.getItem("TOKEN");
-    const { data } = await axios.get("/api/user/user/results", {
-      headers: { authorization: token },
-    });
-    dispatch(setUserResults(data));
-  };
-};
-
 // Take a look at app/redux/index.js to see where this reducer is
 // added to the Redux store with combineReducers
 export default function usersReducer(state = initialState, action) {
@@ -70,8 +52,6 @@ export default function usersReducer(state = initialState, action) {
       return [...action.users];
     case SINGLE_USER:
       return [action.user];
-    case SET_USER_RESULTS:
-      return action.userResults;
     default:
       return state;
   }
