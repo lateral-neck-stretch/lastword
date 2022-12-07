@@ -122,9 +122,9 @@ form div {
   margin: 30px 10%;
 
 }
-.home-div, .prompt-control, .prompt, .service-container, .prompt_div{
+.home-div, .prompt-control, .prompt, .service-container, .prompt_div, .result-div{
     animation-duration: 1s;
-  animation-name: slideIn;
+    animation-name: slideIn;
 }
 @keyframes slideIn{
   0%{
@@ -192,4 +192,10 @@ form div {
 
 .green {
   color: green;
+}
+.result-div{
+  padding: 1rem;
+  margin: 30px 10%;
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.1);
 }
