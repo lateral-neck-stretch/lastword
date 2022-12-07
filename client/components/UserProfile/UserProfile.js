@@ -4,6 +4,7 @@ import { fetchSingleUser } from "../../store/users";
 import { connect, useSelector, useEffect } from "react-redux";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import style from "./UserProfile.module.css";
 
 function UserProfile(props) {
   // const singleUser = useSelector((state) => state.user);
@@ -18,14 +19,17 @@ function UserProfile(props) {
 
   return (
     <div>
-      <h1>Welcome, {username}</h1>
+      {/* <h1>Welcome, {username}</h1> */}
 
       {/* ///USER AVATAR/// */}
-      <Avatar
-        alt="user_avatar"
-        src="/triceratops_avatar.png"
-        sx={{ width: 100, height: 100 }}
-      />
+      <div class="column" className={style.sideBar}>
+        <Avatar
+          alt="user_avatar"
+          src="/triceratops_avatar.png"
+          sx={{ width: 100, height: 100, bgcolor: "white" }}
+        />
+        <h3>Hi, {username} </h3>
+      </div>
     </div>
   );
 }

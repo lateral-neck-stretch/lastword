@@ -1,0 +1,9 @@
+.sideBar{
+  flex-direction: column;
+  color:white;
+  margin: 40px;
+}
+h3{
+  text-transform: uppercase;
+  font-weight: bold;
+}

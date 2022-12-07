@@ -5,17 +5,17 @@ import { BrowserRouter } from "react-router-dom";
 import history from "./history";
 import store from "./store";
 import App from "./App";
-import { StylesProvider } from "@material-ui/core/styles";
+import StyledEngineProvider from "@mui/material/StyledEngineProvider";
 
 ReactDOM.render(
-  <StylesProvider injectFirst>
-    <React.StrictMode>
-      <Provider store={store}>
-        <BrowserRouter history={history}>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter history={history}>
+        <StyledEngineProvider injectFirst>
           <App />
-        </BrowserRouter>
-      </Provider>
-    </React.StrictMode>
-  </StylesProvider>,
+        </StyledEngineProvider>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById("app")
 );
