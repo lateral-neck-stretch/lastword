@@ -15,9 +15,10 @@ export const UserResults = () => {
       <p>Welcome to UserResults</p>
       {userResults ? (
         <ul>
-          {userResults.map((result, index) => {
+          {userResults.map((result) => {
             return (
-              <li key={index}>
+              <li key={result.id}>
+                <p>Prompt#{result.promptId}</p>
                 <p>Topic similarity: {result.similarityScore}%</p>
 
                 <p>Vocabulary correctness: {result.vocabScore}%</p>
