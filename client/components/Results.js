@@ -13,28 +13,28 @@ function Results(props) {
 
   useEffect(() => {
     const func = async () => {
-        const { data } = await axios.get("/auth/twinwords");
-        let resultsArray = await Promise.all(props.location.state.transcript.map(async (sentence, index) => {
-          const options = {
-            method: "GET",
-            url: "https://twinword-text-similarity-v1.p.rapidapi.com/similarity/",
-            params: {
-              text1: sentence,
-              text2: props.location.state.key[index],
-            },
-            headers: data,
-          };
-          let response = await axios.request(options)
-          return response.data;
-        }))
-        setResult(resultsArray)
-      }
-      func()
-      dispatch(setTranscript([]));
-    }, []);
+      const { data } = await axios.get("/auth/twinwords");
+      let resultsArray = await Promise.all(props.location.state.transcript.map(async (sentence, index) => {
+        const options = {
+          method: "GET",
+          url: "https://twinword-text-similarity-v1.p.rapidapi.com/similarity/",
+          params: {
+            text1: sentence,
+            text2: props.location.state.key[index],
+          },
+          headers: data,
+        };
+        let response = await axios.request(options)
+        return response.data;
+      }))
+      setResult(resultsArray)
+    }
+    func()
+    dispatch(setTranscript([]));
+  }, []);
 
-    /////////// Grab the actual transcript probably passed as props from translate page component
-    // useEffect(() => {
+  /////////// Grab the actual transcript probably passed as props from translate page component
+  // useEffect(() => {
   //   async function getTranscript() {
   //     let watsonTranscript = await axios.get("/api/watson");
   //     let transcriptData = watsonTranscript.data;
@@ -51,7 +51,7 @@ function Results(props) {
       let translationArray = vocabObject[word]
       let included = false
       translationArray.forEach((translatedWord) => {
-        if(joinedTranscript.includes(translatedWord.toLowerCase())) {
+        if (joinedTranscript.includes(translatedWord.toLowerCase())) {
           included = true
         }
       })
@@ -67,8 +67,8 @@ function Results(props) {
         return 0
       }
     })
-      setVocab(finalScores)
-    }, [])
+    setVocab(finalScores)
+  }, [])
 
   useEffect(() => {
     if (result && vocab) {
@@ -82,31 +82,31 @@ function Results(props) {
 
   useEffect(() => {
     if (result) {
-    result.forEach((apiSentenceScore, index) => {
-      let htmlId = "#sentence_no_" + index;
-      let htmlSentence = $(htmlId)
-      if (apiSentenceScore.similarity < 0.5) {
-        htmlSentence.css("color", "red")
-      } else if (apiSentenceScore.similarity < 0.8) {
-        htmlSentence.css("color", "yellow")
-      } else {
-        htmlSentence.css("color", "green")
-      }
-    })
-  }
+      result.forEach((apiSentenceScore, index) => {
+        let htmlId = "#sentence_no_" + index;
+        let htmlSentence = $(htmlId)
+        if (apiSentenceScore.similarity < 0.5) {
+          htmlSentence.css("color", "red")
+        } else if (apiSentenceScore.similarity < 0.8) {
+          htmlSentence.css("color", "yellow")
+        } else {
+          htmlSentence.css("color", "green")
+        }
+      })
+    }
   }, [result])
 
   return (
-    <div>
+    <div className="result-div">
       <h1>Results:</h1>
-      <div>{(result) ? ("Translation score: " + (result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length) * 100 * (result.length / props.location.state.key.length) + "%") : (null)}</div>
+      <div>{(result) ? ("Translation score: " + (result.reduce((previous, current) => { return previous + current.similarity }, 0) / result.length) * 100 * (result.length / props.location.state.key.length) + "%") : (null)}</div>
       <div>{(vocab) ? ("Vocabulary score: " + (vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length) * 100 + "%") : (null)}</div>
-        {props.location.state.transcript.map((sentence, index) => {
-          let divId = "sentence_no_" + index
-          return (
-            <div key={index} id={divId}>{sentence}</div>
-          )
-        })}
+      {props.location.state.transcript.map((sentence, index) => {
+        let divId = "sentence_no_" + index
+        return (
+          <div key={index} id={divId}>{sentence}</div>
+        )
+      })}
       {(vocab) ? (((vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length) < 1) ? (<h5>Words to work on:</h5>) : (null)) : (null)}
       <ul id="vocab_list">
 
@@ -123,7 +123,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    postResult: (overallScore, vocabScore, similarityScore, timerScore, id, token) => {dispatch(postResult(overallScore, vocabScore, similarityScore, timerScore, id, token))}
+    postResult: (overallScore, vocabScore, similarityScore, timerScore, id, token) => { dispatch(postResult(overallScore, vocabScore, similarityScore, timerScore, id, token)) }
   }
 }
 
