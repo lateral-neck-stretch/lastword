@@ -3,7 +3,7 @@ import axios from "axios";
 import { useDispatch, connect } from "react-redux";
 import { setTranscript } from "../store/watson";
 import { postResult } from "../store/result";
-import $ from 'jquery';
+// import $ from 'jquery';
 
 function Results(props) {
   /// Probably just get transcript through props
