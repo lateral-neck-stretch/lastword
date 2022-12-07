@@ -190,56 +190,56 @@ async function seed() {
       topic: 'Business',
       vocabulary: businessVocab1,
     }),
-    Prompt.create({
-      title: 'Business II',
-      key: [
-        'The unemployment rate has risen steadily over the past year, and it poses a problem for the economy. ',
-        'The Federal Reserve Bank continues to increase interest rates on bank lending. ',
-        "This ultimately affects companies' profits",
-      ],
-      content: [
-        'Traiga a la mesa estrategias de supervivencia de ganar-ganar para asegurar una dominación proactiva. Al final del día, en el futuro, una nueva normalidad que ha evolucionado desde la generación X está en camino hacia una solución de nube optimizada. El contenido generado por el usuario en tiempo real tendrá múltiples puntos de contacto para la deslocalización.',
-      ],
-      language: 'spanish',
-      difficulty: 150,
-      topic: 'Business',
-    }),
-    Prompt.create({
-      title: 'Business III',
-      key: [
-        'Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.',
-      ],
-      content: [
-        'Aproveche la fruta al alcance de la mano para identificar una actividad de valor agregado de estadio para la prueba beta. Supere la brecha digital con clics adicionales de DevOps. La inmersión en nanotecnología a lo largo de la autopista de la información cerrará el círculo al centrarse únicamente en el resultado final.',
-      ],
-      language: 'spanish',
-      difficulty: 200,
-      topic: 'Business',
-    }),
-    Prompt.create({
-      title: 'Back to the Future',
-      key: [
-        "Good evening, I'm Doctor Emmet Brown, I'm standing here on the parking lot of- Jennifer, oh are you a sight for sore eyes. Let me look at you. Now, of course not, Biff, now, I wouldn't want that to happen. Right. Doc? Am I to understand you're still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in a row. Now let me give you a nickle's worth of advice, young man. This so called Doctor Brown is dangerous, he's a real nutcase. You hang around with him you're gonna end up in big trouble.",
-      ],
-      content: [
-        'Buenas noches, soy el doctor Emmet Brown, estoy parado aquí en el estacionamiento de... Jennifer, oh, eres un espectáculo para los ojos doloridos. Déjame mirarte. Ahora, por supuesto que no, Biff, ahora, no me gustaría que eso sucediera. Derecha. ¿Doc? ¿Debo entender que sigues con el doctor Emmett Brown, McFly? Nota de tardanza para usted, señorita Parker. Y uno para ti McFly creo que hace cuatro seguidos. Ahora déjame darte un pequeño consejo, jovencito. Este llamado Doctor Brown es peligroso, es un verdadero chiflado. Si andas con él, vas a terminar en un gran problema.',
-      ],
-      language: 'spanish',
-      difficulty: 270,
-      topic: 'Movies',
-    }),
-    Prompt.create({
-      title: 'Pulp Fiction',
-      key: [
-        "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.",
-      ],
-      content: [
-        'Bueno, la forma en que hacen programas es que hacen un programa. Ese programa se llama piloto. Luego muestran ese programa a las personas que hacen programas, y sobre la base de ese programa deciden si van a hacer más programas. Algunos pilotos son elegidos y se convierten en programas de televisión. Algunos no, se convierten en nada. Protagonizó una de esas que se convirtieron en nada.',
-      ],
-      language: 'spanish',
-      difficulty: 80,
-      topic: 'Movies',
-    }),
+//     Prompt.create({
+//       title: 'Business II',
+//       key: [
+//         'The unemployment rate has risen steadily over the past year, and it poses a problem for the economy. ',
+//         'The Federal Reserve Bank continues to increase interest rates on bank lending. ',
+//         "This ultimately affects companies' profits",
+//       ],
+//       content: [
+//         'Traiga a la mesa estrategias de supervivencia de ganar-ganar para asegurar una dominación proactiva. Al final del día, en el futuro, una nueva normalidad que ha evolucionado desde la generación X está en camino hacia una solución de nube optimizada. El contenido generado por el usuario en tiempo real tendrá múltiples puntos de contacto para la deslocalización.',
+//       ],
+//       language: 'spanish',
+//       difficulty: 150,
+//       topic: 'Business',
+//     }),
+//     Prompt.create({
+//       title: 'Business III',
+//       key: [
+//         'Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.',
+//       ],
+//       content: [
+//         'Aproveche la fruta al alcance de la mano para identificar una actividad de valor agregado de estadio para la prueba beta. Supere la brecha digital con clics adicionales de DevOps. La inmersión en nanotecnología a lo largo de la autopista de la información cerrará el círculo al centrarse únicamente en el resultado final.',
+//       ],
+//       language: 'spanish',
+//       difficulty: 200,
+//       topic: 'Business',
+//     }),
+//     Prompt.create({
+//       title: 'Back to the Future',
+//       key: [
+//         "Good evening, I'm Doctor Emmet Brown, I'm standing here on the parking lot of- Jennifer, oh are you a sight for sore eyes. Let me look at you. Now, of course not, Biff, now, I wouldn't want that to happen. Right. Doc? Am I to understand you're still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in a row. Now let me give you a nickle's worth of advice, young man. This so called Doctor Brown is dangerous, he's a real nutcase. You hang around with him you're gonna end up in big trouble.",
+//       ],
+//       content: [
+//         'Buenas noches, soy el doctor Emmet Brown, estoy parado aquí en el estacionamiento de... Jennifer, oh, eres un espectáculo para los ojos doloridos. Déjame mirarte. Ahora, por supuesto que no, Biff, ahora, no me gustaría que eso sucediera. Derecha. ¿Doc? ¿Debo entender que sigues con el doctor Emmett Brown, McFly? Nota de tardanza para usted, señorita Parker. Y uno para ti McFly creo que hace cuatro seguidos. Ahora déjame darte un pequeño consejo, jovencito. Este llamado Doctor Brown es peligroso, es un verdadero chiflado. Si andas con él, vas a terminar en un gran problema.',
+//       ],
+//       language: 'spanish',
+//       difficulty: 270,
+//       topic: 'Movies',
+//     }),
+//     Prompt.create({
+//       title: 'Pulp Fiction',
+//       key: [
+//         "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.",
+//       ],
+//       content: [
+//         'Bueno, la forma en que hacen programas es que hacen un programa. Ese programa se llama piloto. Luego muestran ese programa a las personas que hacen programas, y sobre la base de ese programa deciden si van a hacer más programas. Algunos pilotos son elegidos y se convierten en programas de televisión. Algunos no, se convierten en nada. Protagonizó una de esas que se convirtieron en nada.',
+//       ],
+//       language: 'spanish',
+//       difficulty: 80,
+//       topic: 'Movies',
+//     }),
     Prompt.create({
       title: 'Politics I',
       key: [
@@ -257,30 +257,30 @@ async function seed() {
       topic: 'Politics',
       vocabulary: politicsVocab1,
     }),
-    Prompt.create({
-      title: 'Politics II',
-      key: [
-        'If one examines material precultural theory, one is faced with a choice: either accept textual narrative or conclude that art serves to reinforce capitalism. In a sense, the subject is contextualised into a Baudrillardist simulation that includes truth as a whole. The characteristic theme of the works of Pynchon is not narrative as such, but subnarrative.',
-      ],
-      content: [
-        'Si uno examina la teoría material precultural, uno se enfrenta a una elección: aceptar la narración textual o concluir que el arte sirve para reforzar capitalismo. En cierto sentido, el sujeto se contextualiza en un Baudrillardist simulación que incluye la verdad como un todo. El tema característico de la Las obras de Pynchon no son narrativas como tales, sino subnarrativas.',
-      ],
-      language: 'spanish',
-      difficulty: 290,
-      topic: 'Politics',
-    }),
-    Prompt.create({
-      title: 'Politics III',
-      key: [
-        'In a sense, if textual narrative holds, we have to choose between conceptualist neocapitalist theory and capitalist subpatriarchialist theory. The subject is interpolated into a capitalist theory that includes consciousness as a reality.',
-      ],
-      content: [
-        'En cierto sentido, si la narrativa textual se mantiene, tenemos que elegir entre teoría conceptualista neocapitalista y teoría capitalista subpatriarquialista. El tema se interpola en una teoría capitalista que incluye la conciencia como una realidad.',
-      ],
-      language: 'spanish',
-      difficulty: 290,
-      topic: 'Politics',
-    }),
+//     Prompt.create({
+//       title: 'Politics II',
+//       key: [
+//         'If one examines material precultural theory, one is faced with a choice: either accept textual narrative or conclude that art serves to reinforce capitalism. In a sense, the subject is contextualised into a Baudrillardist simulation that includes truth as a whole. The characteristic theme of the works of Pynchon is not narrative as such, but subnarrative.',
+//       ],
+//       content: [
+//         'Si uno examina la teoría material precultural, uno se enfrenta a una elección: aceptar la narración textual o concluir que el arte sirve para reforzar capitalismo. En cierto sentido, el sujeto se contextualiza en un Baudrillardist simulación que incluye la verdad como un todo. El tema característico de la Las obras de Pynchon no son narrativas como tales, sino subnarrativas.',
+//       ],
+//       language: 'spanish',
+//       difficulty: 290,
+//       topic: 'Politics',
+//     }),
+//     Prompt.create({
+//       title: 'Politics III',
+//       key: [
+//         'In a sense, if textual narrative holds, we have to choose between conceptualist neocapitalist theory and capitalist subpatriarchialist theory. The subject is interpolated into a capitalist theory that includes consciousness as a reality.',
+//       ],
+//       content: [
+//         'En cierto sentido, si la narrativa textual se mantiene, tenemos que elegir entre teoría conceptualista neocapitalista y teoría capitalista subpatriarquialista. El tema se interpola en una teoría capitalista que incluye la conciencia como una realidad.',
+//       ],
+//       language: 'spanish',
+//       difficulty: 290,
+//       topic: 'Politics',
+//     }),
   ]);
 
   console.log(`seeded ${prompts.length} prompts`);
