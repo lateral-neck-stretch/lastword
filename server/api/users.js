@@ -71,7 +71,7 @@ router.get("/user", requireUserToken, async (req, res, next) => {
 router.get("/user/results", requireUserToken, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id);
-    const userResults = user.getUserResults();
+    const userResults = await user.getUserResults();
     res.json(userResults);
   } catch (err) {
     next(err);
@@ -87,9 +87,9 @@ router.post("/user/results", requireUserToken, async (req, res, next) => {
       vocabScore: req.body.vocabScore,
       similarityScore: req.body.similarityScore,
       timerScore: 1,
-    })
-    res.send(userResult)
+    });
+    res.send(userResult);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});

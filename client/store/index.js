@@ -8,8 +8,17 @@ import prompts from "./prompts";
 import usersReducer from "./users";
 import transcript from "./watson";
 import result from "./result";
+import userResults from "./userResults";
 
-const reducer = combineReducers({ auth, prompt, prompts, transcript, usersReducer, result });
+const reducer = combineReducers({
+  auth,
+  prompt,
+  prompts,
+  transcript,
+  usersReducer,
+  result,
+  userResults,
+});
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({ collapsed: true }))
 );

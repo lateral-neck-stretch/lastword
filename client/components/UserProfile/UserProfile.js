@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import { fetchSingleUser } from "../../store/users";
 import { connect, useSelector, useEffect } from "react-redux";
+import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
@@ -26,6 +27,7 @@ function UserProfile(props) {
         src={userAvatar}
         sx={{ width: 100, height: 100 }}
       />
+      <Link to='/myprofile/userResults'>My Results</Link>
     </div>
   );
 }
