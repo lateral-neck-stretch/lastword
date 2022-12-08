@@ -86,28 +86,45 @@ async function seed() {
     Acústico: ['acoustic'],
   });
   const sportsVocab = JSON.stringify({
-    Deporte: ['sport', 'sports', 'kick'],
+    Deporte: ['sport', 'sports'],
     Fútbol: ['soccer', 'football'],
     Jugador: ['player', 'players'],
-    Pelota: ['ball'],
+    Pelota: ['ball', 'balls'],
     Gol: ['goal'],
     Patada: ['kick'],
     Pesetado: ['score', 'points'],
   });
   const businessVocab1 = JSON.stringify({
     Negocio: ['business'],
-    Empresa: ['company'],
-    Ganancia: ['profit'],
+    Empresa: ['company', 'companies'],
+    Ganancia: ['profit', 'profits'],
     Ingreso: ['income'],
     Rédito: ['revenue'],
     Gasto: ['expenses', 'expense'],
     Dinero: ['cash'],
     Cliente: ['customer', 'client'],
-    Inventario: ['inventory'],
+    Inventario: ['inventory', 'inventories'],
     Invenrtir: ['invest'],
-    Señal: ['sign'],
-    Riesgo: ['risk'],
-    Premio: ['reward'],
+    Señal: ['sign', 'signing'],
+    Riesgo: ['risk', 'risks'],
+    Premio: ['reward', 'rewards'],
+  });
+  const businessVocab2 = JSON.stringify({
+    Desempleo: ['unemployment'],
+    Economía: ['economy'],
+    Banco: ['bank', 'banks'],
+    Ganancia: ['profit', 'profits'],
+    Inflación: ['inflation'],
+    Prestar: ['lend', 'loan'],
+    Presio: ['rate', 'price', 'fee'],
+  });
+  const businessVocab3 = JSON.stringify({
+    Mercado: ['market'],
+    Descentralizado: ['decentralized'],
+    Comercio: ['trade', 'trading'],
+    Divisa: ['currency', 'currencies'],
+    Oferta: ['supply'],
+    Demanda: ['demand'],
   });
   const politicsVocab1 = JSON.stringify({
     Política: ['politics'],
@@ -120,13 +137,49 @@ async function seed() {
     Líder: ['leader'],
     Elección: ['election'],
   });
+  const politicsVocab2 = JSON.stringify({
+    Administración: ['administration'],
+    Ejercicio: ['incumbent', 'holder'],
+    Diplomática: ['diplomatic'],
+    Negociar: ['negotiate'],
+    Estatal: ['state', 'states'],
+    Consejo: ['council'],
+    Security: ['seguridad'],
+    Acuerdos: ['deals'],
+  });
+  const politicsVocab3 = JSON.stringify({
+    Sanciones: ['sanction', 'sanctions'],
+    Obligar: ['coerce', 'obligate'],
+    Embargos: ['embargo', 'embargoes'],
+    Exportación: ['export'],
+    Imponer: ['impose', 'set', 'assert'],
+  });
+  const moviesVocab1 = JSON.stringify({
+    Estacionamiento: ['parking lot'],
+    Doloridos: ['sore', 'aching'],
+    Espectáculo: ['sight', 'spectacle'],
+    Déjame: ['let me', 'let'],
+    Entender: ['understand'],
+    Consejo: ['tip', 'advice'],
+    Peligroso: ['dangerous'],
+    Chiflado: ['mad', 'crazy', 'nutcase'],
+  });
+  const moviesVocab2 = JSON.stringify({
+    Pues: ['well', 'so'],
+    Programa: ['show', 'program'],
+    Llamar: ['call', 'name'],
+    Piloto: ['pilot'],
+    Sobre: ['on', 'upon'],
+    Elegidos: ['chosen', 'picked'],
+    Protagonizó: ['starred'],
+  });
 
   const prompts = await Promise.all([
     Prompt.create({
       title: 'Music',
       key: [
         'Music is an important part of any festival. ',
-        'I mean, who doesn’t want to hear a good tune? ',
+        'Who doesn’t want to hear a good tune? ',
         'But most importantly, music is an important part of any festival experience. ',
         'Music is the soundtrack to the festival. ',
         'If you get this part wrong, you will be missing out on a big part of the fun. ',
@@ -137,7 +190,7 @@ async function seed() {
       ],
       content: [
         'Música es un importante parte de alguna festival. ',
-        'yo media, quien doesn’t querer a oír un bueno melodía? ',
+        'Quien no querer a oír un bueno melodía? ',
         'pero más importantly, música es un importante parte de alguna festival experiencia. ',
         'música es el soundtrack a el festival. ',
         'Si tú obtener esta parte incorrecto, tú será ser desaparecido fuera en un grande parte de el divertido. ',
@@ -190,56 +243,67 @@ async function seed() {
       topic: 'Business',
       vocabulary: businessVocab1,
     }),
-//     Prompt.create({
-//       title: 'Business II',
-//       key: [
-//         'The unemployment rate has risen steadily over the past year, and it poses a problem for the economy. ',
-//         'The Federal Reserve Bank continues to increase interest rates on bank lending. ',
-//         "This ultimately affects companies' profits",
-//       ],
-//       content: [
-//         'Traiga a la mesa estrategias de supervivencia de ganar-ganar para asegurar una dominación proactiva. Al final del día, en el futuro, una nueva normalidad que ha evolucionado desde la generación X está en camino hacia una solución de nube optimizada. El contenido generado por el usuario en tiempo real tendrá múltiples puntos de contacto para la deslocalización.',
-//       ],
-//       language: 'spanish',
-//       difficulty: 150,
-//       topic: 'Business',
-//     }),
-//     Prompt.create({
-//       title: 'Business III',
-//       key: [
-//         'Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.',
-//       ],
-//       content: [
-//         'Aproveche la fruta al alcance de la mano para identificar una actividad de valor agregado de estadio para la prueba beta. Supere la brecha digital con clics adicionales de DevOps. La inmersión en nanotecnología a lo largo de la autopista de la información cerrará el círculo al centrarse únicamente en el resultado final.',
-//       ],
-//       language: 'spanish',
-//       difficulty: 200,
-//       topic: 'Business',
-//     }),
-//     Prompt.create({
-//       title: 'Back to the Future',
-//       key: [
-//         "Good evening, I'm Doctor Emmet Brown, I'm standing here on the parking lot of- Jennifer, oh are you a sight for sore eyes. Let me look at you. Now, of course not, Biff, now, I wouldn't want that to happen. Right. Doc? Am I to understand you're still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in a row. Now let me give you a nickle's worth of advice, young man. This so called Doctor Brown is dangerous, he's a real nutcase. You hang around with him you're gonna end up in big trouble.",
-//       ],
-//       content: [
-//         'Buenas noches, soy el doctor Emmet Brown, estoy parado aquí en el estacionamiento de... Jennifer, oh, eres un espectáculo para los ojos doloridos. Déjame mirarte. Ahora, por supuesto que no, Biff, ahora, no me gustaría que eso sucediera. Derecha. ¿Doc? ¿Debo entender que sigues con el doctor Emmett Brown, McFly? Nota de tardanza para usted, señorita Parker. Y uno para ti McFly creo que hace cuatro seguidos. Ahora déjame darte un pequeño consejo, jovencito. Este llamado Doctor Brown es peligroso, es un verdadero chiflado. Si andas con él, vas a terminar en un gran problema.',
-//       ],
-//       language: 'spanish',
-//       difficulty: 270,
-//       topic: 'Movies',
-//     }),
-//     Prompt.create({
-//       title: 'Pulp Fiction',
-//       key: [
-//         "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.",
-//       ],
-//       content: [
-//         'Bueno, la forma en que hacen programas es que hacen un programa. Ese programa se llama piloto. Luego muestran ese programa a las personas que hacen programas, y sobre la base de ese programa deciden si van a hacer más programas. Algunos pilotos son elegidos y se convierten en programas de televisión. Algunos no, se convierten en nada. Protagonizó una de esas que se convirtieron en nada.',
-//       ],
-//       language: 'spanish',
-//       difficulty: 80,
-//       topic: 'Movies',
-//     }),
+    Prompt.create({
+      title: 'Business II',
+      key: [
+        'The unemployment rate has risen steadily over the past year, and it poses a problem for the economy. ',
+        'The Federal Reserve Bank continues to increase interest rates on bank lending in an effort to control inflation. ',
+        "This ultimately affects companies' profits and their ability to keep employees on their payroll.",
+      ],
+      content: [
+        'La tasa de desempleo ha aumentado constantemente durante el último año y plantea un problema para la economía. ',
+        'El Banco de la Reserva Federal continúa aumentando las tasas de interés de los préstamos bancarios en un esfuerzo por controlar la inflación. ',
+        'Esto, en última instancia, afecta las ganancias de las empresas y su capacidad para mantener a los empleados en su nómina',
+      ],
+      language: 'spanish',
+      difficulty: 150,
+      topic: 'Business',
+      vocabulary: businessVocab2,
+    }),
+    Prompt.create({
+      title: 'Business III',
+      key: [
+        'The foreign exchange market is a global decentralized or over-the-counter market for the trading of currencies. ',
+        'This market determines foreign exchange rates for every currency. ',
+        'It includes all aspects of buying, selling and exchanging currencies at current or determined prices. ',
+        'Los precios fluctúan dependiendo de la oferta y la demanda de estas monedas.',
+      ],
+      content: [
+        'El mercado de divisas es un mercado global descentralizado o extrabursátil para el comercio de divisas. ',
+        'Este mercado determina los tipos de cambio de cada divisa. ',
+        'Incluye todos los aspectos de compra, venta e intercambio de divisas a precios actuales o determinados.',
+      ],
+      language: 'spanish',
+      difficulty: 200,
+      topic: 'Business',
+      vocabulary: businessVocab3,
+    }),
+    Prompt.create({
+      title: 'Back to the Future',
+      key: [
+        "Good evening, I'm Doctor Emmet Brown, I'm standing here on the parking lot of- Jennifer, oh are you a sight for sore eyes. Let me look at you. Now, of course not, Biff, now, I wouldn't want that to happen. Right. Doc? Am I to understand you're still hanging around with Doctor Emmett Brown, McFly? Tardy slip for you, Miss Parker. And one for you McFly I believe that makes four in a row. Now let me give you a nickle's worth of advice, young man. This so called Doctor Brown is dangerous, he's a real nutcase. You hang around with him you're gonna end up in big trouble.",
+      ],
+      content: [
+        'Buenas noches, soy el doctor Emmet Brown, estoy parado aquí en el estacionamiento de... Jennifer, oh, eres un espectáculo para los ojos doloridos. Déjame mirarte. Ahora, por supuesto que no, Biff, ahora, no me gustaría que eso sucediera. Derecha. ¿Doc? ¿Debo entender que sigues con el doctor Emmett Brown, McFly? Nota de tardanza para usted, señorita Parker. Y uno para ti McFly creo que hace cuatro seguidos. Ahora déjame darte un pequeño consejo, jovencito. Este llamado Doctor Brown es peligroso, es un verdadero chiflado. Si andas con él, vas a terminar en un gran problema.',
+      ],
+      language: 'spanish',
+      difficulty: 270,
+      topic: 'Movies',
+      vocabulary: moviesVocab1,
+    }),
+    Prompt.create({
+      title: 'Pulp Fiction',
+      key: [
+        "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.",
+      ],
+      content: [
+        'Pues, la forma en que hacen programas es que hacen un programa. Ese programa se llama piloto. Luego muestran ese programa a las personas que hacen programas, y sobre la base de ese programa deciden si van a hacer más programas. Algunos pilotos son elegidos y se convierten en programas de televisión. Algunos no, se convierten en nada. Protagonizó una de esas que se convirtieron en nada.',
+      ],
+      language: 'spanish',
+      difficulty: 80,
+      topic: 'Movies',
+      vocabulary: moviesVocab2,
+    }),
     Prompt.create({
       title: 'Politics I',
       key: [
@@ -257,30 +321,40 @@ async function seed() {
       topic: 'Politics',
       vocabulary: politicsVocab1,
     }),
-//     Prompt.create({
-//       title: 'Politics II',
-//       key: [
-//         'If one examines material precultural theory, one is faced with a choice: either accept textual narrative or conclude that art serves to reinforce capitalism. In a sense, the subject is contextualised into a Baudrillardist simulation that includes truth as a whole. The characteristic theme of the works of Pynchon is not narrative as such, but subnarrative.',
-//       ],
-//       content: [
-//         'Si uno examina la teoría material precultural, uno se enfrenta a una elección: aceptar la narración textual o concluir que el arte sirve para reforzar capitalismo. En cierto sentido, el sujeto se contextualiza en un Baudrillardist simulación que incluye la verdad como un todo. El tema característico de la Las obras de Pynchon no son narrativas como tales, sino subnarrativas.',
-//       ],
-//       language: 'spanish',
-//       difficulty: 290,
-//       topic: 'Politics',
-//     }),
-//     Prompt.create({
-//       title: 'Politics III',
-//       key: [
-//         'In a sense, if textual narrative holds, we have to choose between conceptualist neocapitalist theory and capitalist subpatriarchialist theory. The subject is interpolated into a capitalist theory that includes consciousness as a reality.',
-//       ],
-//       content: [
-//         'En cierto sentido, si la narrativa textual se mantiene, tenemos que elegir entre teoría conceptualista neocapitalista y teoría capitalista subpatriarquialista. El tema se interpola en una teoría capitalista que incluye la conciencia como una realidad.',
-//       ],
-//       language: 'spanish',
-//       difficulty: 290,
-//       topic: 'Politics',
-//     }),
+    Prompt.create({
+      title: 'Politics II',
+      key: [
+        'The administration under the incumbent president has maneuvered through this global crisis very well. ',
+        'By overhauling their diplomatic policies, they were able to negotiate with enemy states. ',
+        'The United Nations Security Council played a major part in brokering the deals necessary for handling this crisis.',
+      ],
+      content: [
+        'La administración del presidente en ejercicio ha maniobrado muy bien a través de esta crisis global.',
+        'Al revisar sus políticas diplomáticas, pudieron negociar con estados enemigos. ',
+        'El Consejo de Seguridad de las Naciones Unidas desempeñó un papel importante en la negociación de los acuerdos necesarios para manejar esta crisis.',
+      ],
+      language: 'spanish',
+      difficulty: 290,
+      topic: 'Politics',
+      vocabulary: politicsVocab2,
+    }),
+    Prompt.create({
+      title: 'Politics III',
+      key: [
+        'Sanctions were placed in an effort to coerce the other nation to change their social policies emplaced on their citizens. ',
+        'By imposing significant costs on the other nation, the government may be forced to change their policies. ',
+        'Many times this means placing embargoes and placing export controls.',
+      ],
+      content: [
+        'Las sanciones se impusieron en un esfuerzo por obligar a la otra nación a cambiar sus políticas sociales impuestas a sus ciudadanos. ',
+        'Al imponer costos significativos a la otra nación, el gobierno puede verse obligado a cambiar sus políticas. ',
+        'Muchas veces esto significa imponer embargos y controles de exportación.',
+      ],
+      language: 'spanish',
+      difficulty: 290,
+      topic: 'Politics',
+      vocabulary: politicsVocab3,
+    }),
   ]);
 
   console.log(`seeded ${prompts.length} prompts`);
