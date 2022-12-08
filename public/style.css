@@ -137,7 +137,7 @@ form div {
   }
 }
 .home-header{
-  font-size: 2rem; 
+  font-size: 2rem;
 }
 .home-links{
   font-weight: bold;
@@ -165,7 +165,7 @@ form div {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  
+
 }
 .prompt{
   box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
@@ -182,12 +182,25 @@ form div {
   font-weight: 500;
   font-style: italic;
 }
+
+.red {
+  color: red;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.green {
+  color: green;
+}
 .result-div{
   padding: 1rem 2rem;
   margin: 30px 10%;
   box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.1);
 }
+
 .auth{
   background: rgba(0, 0, 0, 0.6);
   min-width: 200px;
@@ -228,3 +241,4 @@ form div {
     width: calc(33% - 2.55rem);
   }
 }
+

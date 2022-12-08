@@ -3,7 +3,7 @@ import axios from "axios";
 import { useDispatch, connect } from "react-redux";
 import { setTranscript } from "../store/watson";
 import { postResult } from "../store/result";
-import $ from 'jquery';
+// import $ from 'jquery';
 
 function Results(props) {
   /// Probably just get transcript through props
@@ -58,12 +58,12 @@ function Results(props) {
       return included
     })
     let finalScores = vocabScores.map((binary, index) => {
-      let htmlList = $("#vocab_list")
+      // let htmlList = $("#vocab_list")
       if (binary === true) {
         return 1
       } else {
-        let li = "<li>" + vocabWords[index] + "</li>"
-        htmlList.append(li)
+        // let li = "<li>" + vocabWords[index] + "</li>"
+        // htmlList.append(li)
         return 0
       }
     })
@@ -73,44 +73,63 @@ function Results(props) {
   useEffect(() => {
     if (result && vocab) {
       const token = window.localStorage.getItem("token");
-      let apiScore = Math.floor(result.reduce((previous, current) => { return previous + current.similarity }, 0) / result.length * 100 * (result.length / props.location.state.length))
+      let apiScore = Math.floor(result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length) * 100 * (result.length / props.location.state.key.length)
       let vocabScore = Math.floor(vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length * 100)
       let overallScore = Math.floor((apiScore + vocabScore) / 2)
       props.postResult(overallScore, vocabScore, apiScore, 1, props.location.state.id, token)
     }
   }, [result, vocab])
 
-  useEffect(() => {
-    if (result) {
-      result.forEach((apiSentenceScore, index) => {
-        let htmlId = "#sentence_no_" + index;
-        let htmlSentence = $(htmlId)
-        if (apiSentenceScore.similarity < 0.5) {
-          htmlSentence.css("color", "red")
-        } else if (apiSentenceScore.similarity < 0.8) {
-          htmlSentence.css("color", "yellow")
-        } else {
-          htmlSentence.css("color", "green")
-        }
-      })
-    }
-  }, [result])
+  // useEffect(() => {
+  //   if (result) {
+  //   result.forEach((apiSentenceScore, index) => {
+  //     let htmlId = "#sentence_no_" + index;
+  //     let htmlSentence = $(htmlId)
+  //     if (apiSentenceScore.similarity < 0.5) {
+  //       htmlSentence.css("color", "red")
+  //     } else if (apiSentenceScore.similarity < 0.8) {
+  //       htmlSentence.css("color", "yellow")
+  //     } else {
+  //       htmlSentence.css("color", "green")
+  //     }
+  //   })
+  // }
+  // }, [result])
+
 
   return (
     <div className="result-div">
       <h1>Results:</h1>
       <div>{(result) ? ("Translation score: " + (result.reduce((previous, current) => { return previous + current.similarity }, 0) / result.length) * 100 * (result.length / props.location.state.key.length) + "%") : (null)}</div>
       <div>{(vocab) ? ("Vocabulary score: " + (vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length) * 100 + "%") : (null)}</div>
-      {props.location.state.transcript.map((sentence, index) => {
-        let divId = "sentence_no_" + index
-        return (
-          <div key={index} id={divId}>{sentence}</div>
-        )
-      })}
-      {(vocab) ? (((vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length) < 1) ? (<h5>Words to work on:</h5>) : (null)) : (null)}
-      <ul id="vocab_list">
+        {(result) ? (props.location.state.transcript.map((sentence, index) => {
+          // let divId = "sentence_no_" + index
+          console.log(result[index].similarity)
+          console.log(result[index])
+          if (result[index].similarity < 0.5) {
+            return (
+              <div key={index} className="red">{sentence}</div>
+            )
+          } else if (result[index].similarity < 0.8) {
+            return (
+              <div key={index}  className="yellow">{sentence}</div>
+            )
+          } else {
+            return (
+              <div key={index} className="green">{sentence}</div>
+            )
+          }
 
-      </ul>
+
+        })) : (null)}
+      {(vocab) ? (((vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length) < 1) ? (<h5>Words to work on:</h5>) : (null)) : (null)}
+      {(vocab) ? (
+        Object.keys(JSON.parse(props.location.state.vocabulary)).map((vocabWord, index) => {
+          if (vocab[index] === 0) {
+            return <div>{vocabWord}</div>
+          }
+        })
+        ) : (null)}
     </div>
   );
 }
