@@ -12,7 +12,7 @@ export const InstructionsPage = ({ setInstructions }) => {
         <ul>
           <li>
             After you have signed up and logged in, you can begin learning your
-            next language*
+            next language.
           </li>
           <li>Begin by selecting the Prompts link on the top banner.</li>
           <li>
@@ -21,7 +21,7 @@ export const InstructionsPage = ({ setInstructions }) => {
           </li>
           <li>
             Once you select a prompt you will be given a prompt in your native
-            language*
+            language.
           </li>
           <li>
             Your job is to read and translate the excerpt into the language you
@@ -34,12 +34,11 @@ export const InstructionsPage = ({ setInstructions }) => {
           </li>
           <li>
             Upon submission, you will be given a score based on your ability to
-            correctly translate vocabulary, ..., and a time bonus.*
+            correctly read, translate, and speak.
           </li>
           <li>
             You can review a history of your results in your User profile page.
           </li>
-          <p>* Native: Spanish, Learning: English, Scoring in progress</p>
         </ul>
         <button onClick={handleClick}>Close</button>
       </div>
