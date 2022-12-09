@@ -1,7 +1,7 @@
 # Last Word
 
 ## Website
-[Go to website](https://last-word.onrender.com)
+[Link to website](https://last-word.onrender.com)
 
 ## About
 Last word is an educational app which allows users to practice learning their next language. Users will have the opportunity to practice their speaking, reading, and vocabulary in the language of their choice.
