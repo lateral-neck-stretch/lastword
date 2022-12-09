@@ -2,6 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import { fetchSingleUser } from "../../store/users";
 import { connect, useSelector, useEffect } from "react-redux";
+import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import style from "./UserProfile.module.css";
@@ -85,6 +86,7 @@ function UserProfile(props) {
           </Controller>
         </section>
       </div>
+
     </div>
   );
 }
@@ -99,8 +101,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSingleUser: (id, token) => {
-      dispatch(fetchSingleUser(id, token));
+    fetchSingleUser: (token) => {
+      dispatch(fetchSingleUser(token));
     },
   };
 };

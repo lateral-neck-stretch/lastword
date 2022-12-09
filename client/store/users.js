@@ -1,9 +1,9 @@
-import axios from "axios";
-import history from "../history";
+import axios from 'axios';
+import history from '../history';
 
 //action types
-const SET_USERS = "SET_USERS";
-const SINGLE_USER = "SINGLE_USER";
+const SET_USERS = 'SET_USERS';
+const SINGLE_USER = 'SINGLE_USER';
 
 let initialState = [];
 
@@ -25,7 +25,7 @@ export const singleUser = (user) => {
 // thunk creators
 export const fetchUsers = (token) => {
   return async (dispatch) => {
-    const response = await axios.get("/api/users", {
+    const response = await axios.get('/api/users', {
       headers: { authorization: token },
     });
     const users = response.data;
@@ -36,9 +36,10 @@ export const fetchUsers = (token) => {
 
 export const fetchSingleUser = (token) => {
   return async (dispatch) => {
-    const response = await axios.get(`/api/users/user`, {
+    const response = await axios.get('/api/users/user', {
       headers: { authorization: token },
     });
+    // history.push("/myprofile");
     return dispatch(singleUser(response.data));
   };
 };

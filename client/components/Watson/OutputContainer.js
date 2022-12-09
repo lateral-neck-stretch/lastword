@@ -17,32 +17,13 @@ export const OutputContainer = ({
   keywordInfo,
   transcriptArray,
 }) => {
-  // Use for fetches to server
-  /**
-   * console.log("Printing transcript: ", transcriptArray);
-    if (transcriptArray.length > 0) {
-      await fetch("/api/prompts", {
-        method: "POST",
-        body: JSON.stringify(transcriptArray[0]),
-        headers: { "Content-Type": "application/json" },
-      })
-        .then(function (response) {
-          if (response) {
-            return response.json();
-          }
-        })
-        .catch(function (err) {
-          console.error(err);
-        });
-    }
-   */
   const dispatch = useDispatch();
   const submitTranscript = async () => {
     dispatch(setTranscript(transcriptArray));
   };
   return (
     <Tile className="output-container">
-      <h3 className="container-title">Output</h3>
+      {/* <h3 className="container-title">Output</h3>
       <FormGroup legendText="Audio">
         <AudioWave
           audioWaveContainerRef={audioWaveContainerRef}
@@ -52,15 +33,15 @@ export const OutputContainer = ({
           audioSource={audioSource}
           audioAnalyzer={audioAnalyzer}
         />
-      </FormGroup>
-      <FormGroup legendText="Transcript">
+      </FormGroup> */}
+      <FormGroup legendText="Response" className="response">
         <TranscriptBox
           keywordInfo={keywordInfo}
           transcriptArray={transcriptArray}
         />
       </FormGroup>
       <Button
-        className="submit-transcript"
+        className="submit-transcript btn"
         kind="tertiary"
         onClick={submitTranscript}
       >

@@ -22,9 +22,6 @@ const User = db.define("user", {
       isEmail: true,
     },
   },
-  scoreHistory: {
-    type: Sequelize.JSON,
-  },
   proficiency: {
     type: Sequelize.INTEGER,
     validate: {
@@ -32,15 +29,9 @@ const User = db.define("user", {
       max: 300,
     },
   },
-  topicScores: {
-    type: Sequelize.JSON,
-  },
-  wordScores: {
-    type: Sequelize.JSON,
-  },
   userAvatar: {
     type: Sequelize.STRING,
-    defaultValue: "public/triceratops_avatar.png",
+    defaultValue: "triceratops_avatar.png",
   },
 });
 

@@ -1,15 +1,17 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
-import { withRouter, Route, Switch, Redirect } from "react-router-dom";
-import { Login, Signup } from "./components/AuthForm";
-import Home from "./components/Home";
-import { me } from "./store";
-import UserTranslatePage from "./components/UserTranslatePage/UserTranslatePage";
-import PromptSelection from "./components/PromptSelection";
-import UserProfile from "./components/UserProfile/UserProfile";
-import Results from "./components/Results";
-import LandingPage from "./components/LandingPage/LandingPage";
-import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Login, Signup } from './components/AuthForm';
+import Home from './components/Home';
+import { me } from './store';
+import UserTranslatePage from './components/UserTranslatePage/UserTranslatePage';
+import PromptSelection from './components/PromptSelection';
+import UserProfile from './components/UserProfile/UserProfile';
+import Results from './components/Results';
+import LandingPage from './components/LandingPage/LandingPage';
+import { UserResults } from './components/UserResults';
+import { Leaderboard } from './components/Leaderboard';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 /**
  * COMPONENT
@@ -26,21 +28,24 @@ class Routes extends Component {
       <div>
         {isLoggedIn ? (
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/LandingPage" component={LandingPage} />
-            <Route path="/prompts/:id" component={UserTranslatePage} />
-            <Route path="/prompts" component={PromptSelection} />
-            <Route exact path="/myprofile" component={UserProfile} />
-            <Route path="/results" component={Results} />
-            <Route path="/error" component={NotFoundPage} />
-            <Redirect to="/error" />
+            <Route exact path='/' component={Home} />
+            <Route path='/LandingPage' component={LandingPage} />
+            <Route path='/prompts/:id' component={UserTranslatePage} />
+            <Route exact path='/prompts' component={PromptSelection} />
+            <Route path='/myprofile/userResults' component={UserResults} />
+            <Route exact path='/myprofile' component={UserProfile} />
+            <Route path='/results' component={Results} />
+            <Route path='/leaderboard' component={Leaderboard} />
+            <Route path='/*' component={NotFoundPage} />
+            {/* <Redirect to="/error" /> */}
           </Switch>
         ) : (
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="*" component={NotFoundPage} />
+            <Route exact path='/' component={Home} />
+            <Route path='/login' component={Login} />
+            <Route path='/signup' component={Signup} />
+            <Route path='/leaderboard' component={Leaderboard} />
+            <Route path='/*' component={NotFoundPage} />
           </Switch>
         )}
       </div>

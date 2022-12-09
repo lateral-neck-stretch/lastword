@@ -97,7 +97,7 @@ export const SubmitContainer = ({
 
   return (
     <div className="submit-container">
-      {isSamplePlaying ? (
+      {/* {isSamplePlaying ? (
         <Button
           className="submit-button"
           kind="tertiary"
@@ -119,18 +119,18 @@ export const SubmitContainer = ({
         >
           Play audio sample
         </Button>
-      )}
+      )} */}
       {isRecording ? (
         <Button
-          className="submit-button"
+          className="submit-button btn stop-record"
           kind="tertiary"
           onClick={onStopRecording}
         >
-          Stop recording
+          Stop Recording
         </Button>
       ) : (
         <Button
-          className="submit-button"
+          className="submit-button btn record"
           disabled={!modelName}
           kind="tertiary"
           onClick={async () => {
@@ -140,10 +140,10 @@ export const SubmitContainer = ({
             }
           }}
         >
-          Record your own
+          Record
         </Button>
       )}
-      {isUploadPlaying ? (
+      {/* {isUploadPlaying ? (
         <Button
           className="submit-button"
           kind="tertiary"
@@ -152,22 +152,23 @@ export const SubmitContainer = ({
           Stop playing
         </Button>
       ) : (
-        <FileUploaderButton
-          accept={["audio/wav", "audio/mpeg", "audio/flac", "audio/opus"]}
-          buttonKind="tertiary"
-          className="submit-button"
-          disabled={!modelName}
-          disableLabelChanges
-          labelText="Upload file"
-          onChange={async (evt) => {
-            const uploadedFile = evt.currentTarget.files[0];
-            const config = await getUploadAudioConfig(uploadedFile);
-            if (!config.error) {
-              onStartPlayingFileUpload(config);
-            }
-          }}
-        />
-      )}
+        ""
+        // <FileUploaderButton
+        //   accept={["audio/wav", "audio/mpeg", "audio/flac", "audio/opus"]}
+        //   buttonKind="tertiary"
+        //   className="submit-button"
+        //   disabled={!modelName}
+        //   disableLabelChanges
+        //   labelText="Upload file"
+        //   onChange={async (evt) => {
+        //     const uploadedFile = evt.currentTarget.files[0];
+        //     const config = await getUploadAudioConfig(uploadedFile);
+        //     if (!config.error) {
+        //       onStartPlayingFileUpload(config);
+        //     }
+        //   }}
+        // />
+      )} */}
     </div>
   );
 };
@@ -194,13 +195,13 @@ SubmitContainer.defaultProps = {
   isUploadPlaying: false,
   keywordText: "",
   modelName: null,
-  onError: () => {},
-  onStartPlayingFileUpload: () => {},
-  onStopPlayingFileUpload: () => {},
-  onStartPlayingSample: () => {},
-  onStopPlayingSample: () => {},
-  onStartRecording: () => {},
-  onStopRecording: () => {},
+  onError: () => { },
+  onStartPlayingFileUpload: () => { },
+  onStopPlayingFileUpload: () => { },
+  onStartPlayingSample: () => { },
+  onStopPlayingSample: () => { },
+  onStartRecording: () => { },
+  onStopRecording: () => { },
   useSpeakerLabels: false,
 };
 
