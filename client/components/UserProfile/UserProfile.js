@@ -1,23 +1,25 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import { fetchSingleUser } from "../../store/users";
-import { connect, useSelector, useEffect } from "react-redux";
-import { Link } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
-import Stack from "@mui/material/Stack";
-import style from "./UserProfile.module.css";
-import { Controller, Scene } from "react-scrollmagic";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import { fetchSingleUser } from '../../store/users';
+import { connect, useSelector, useEffect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+import style from './UserProfile.module.css';
+import { Controller, Scene } from 'react-scrollmagic';
 import {
   VictoryChart,
   VictoryArea,
   VictoryAxis,
   VictoryPolarAxis,
   VictoryTheme,
-} from "victory";
+} from 'victory';
+
+import { UserResults } from '../UserResults';
 
 function UserProfile(props) {
   // const singleUser = useSelector((state) => state.user);
-  const token = window.localStorage.getItem("token");
+  const token = window.localStorage.getItem('token');
   const { username, id, userAvatar } = props;
 
   const sampleData = [
@@ -28,19 +30,19 @@ function UserProfile(props) {
   ];
 
   React.useEffect(() => {
-    console.log("props", props);
+    console.log('props', props);
     const user = props.fetchSingleUser(token);
-    console.log("user", user);
+    console.log('user', user);
   }, []);
 
   return (
     <div className={style.sidebarPage}>
       {/* ///USER AVATAR/// */}
-      <div className={style.sideBar} side="right">
+      <div className={style.sideBar} side='right'>
         <Avatar
-          alt="user_avatar"
-          src="/triceratops_avatar.png"
-          sx={{ width: 100, height: 100, bgcolor: "white" }}
+          alt='user_avatar'
+          src='/triceratops_avatar.png'
+          sx={{ width: 100, height: 100, bgcolor: 'white' }}
         />
         <h2>Hi, {username} </h2>
         <h4>Level 8</h4>
@@ -81,12 +83,13 @@ function UserProfile(props) {
               triggerHook={0.5}
               offset={125}
             >
-              <div> My Past Results </div>
+              <div>
+                <UserResults />
+              </div>
             </Scene>
           </Controller>
         </section>
       </div>
-
     </div>
   );
 }
