@@ -6,11 +6,25 @@ import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import style from "./UserProfile.module.css";
 import { Controller, Scene } from "react-scrollmagic";
+import {
+  VictoryChart,
+  VictoryArea,
+  VictoryAxis,
+  VictoryPolarAxis,
+  VictoryTheme,
+} from "victory";
 
 function UserProfile(props) {
   // const singleUser = useSelector((state) => state.user);
   const token = window.localStorage.getItem("token");
   const { username, id, userAvatar } = props;
+
+  const sampleData = [
+    { quarter: 1, earnings: 13000 },
+    { quarter: 2, earnings: 16500 },
+    { quarter: 3, earnings: 14250 },
+    { quarter: 4, earnings: 19000 },
+  ];
 
   React.useEffect(() => {
     console.log("props", props);
@@ -45,10 +59,20 @@ function UserProfile(props) {
             <Scene
               duration={800}
               pin={{ pushFollowers: true }}
-              triggerHook={0.5}
+              // triggerHook={0.5}
               offset={125}
             >
-              <div> Test test pg 1 </div>
+              <div>
+                <h4>My Stats</h4>
+                <VictoryChart theme={VictoryTheme.material}>
+                  <VictoryArea data={sampleData} />
+                  <VictoryAxis />
+                </VictoryChart>
+                <VictoryChart polar theme={VictoryTheme.material}>
+                  <VictoryArea data={sampleData} />
+                  <VictoryPolarAxis />
+                </VictoryChart>
+              </div>
             </Scene>
             <Scene
               duration={800}
@@ -56,7 +80,7 @@ function UserProfile(props) {
               triggerHook={0.5}
               offset={125}
             >
-              <div> Test test pg 2 </div>
+              <div> My Past Results </div>
             </Scene>
           </Controller>
         </section>

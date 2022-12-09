@@ -45,28 +45,11 @@ function Navbar() {
 
   return (
     <AppBar className={style.navbar} position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" border-bottom="white">
         <Toolbar disableGutters>
           <img className={style.logo} src={cornerLogo} alt="lastword logo" />
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LAST WORD
-          </Typography> */}
           <Box
-            className={style.navbar}
+            className={style.navbar_links}
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
           >
             {pages.map((page) => (
