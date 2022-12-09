@@ -183,7 +183,7 @@ const mapDispatch = (dispatch) => {
     handleLogout(evt) {
       evt.preventDefault();
       dispatch(logout());
-    },
+
   };
 };
 const NavbarConnected = connect(mapNav, mapDispatch)(Navbar);
