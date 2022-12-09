@@ -1,0 +1,39 @@
+body{
+  /* background: #E2D1A5 */
+}
+h2{
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h4{
+  text-transform: uppercase;
+  font-weight: bold;
+  position:sticky
+}
+
+.sideBar{
+  position:sticky;
+  flex-direction: column;
+  color:white;
+  margin: 40px;
+  columns:auto;
+  flex-basis: 20rem;
+  flex-grow: 1;
+  height: 100%;
+  float: right;
+  top:100px;
+  margin-top: 100px;
+  padding-top: 0px;
+}
+.sidebarPage{
+  display: flex;
+  flex-wrap: wrap;
+}
+.scrollComponent{
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+  overflow:scroll;
+  color:white;
+}

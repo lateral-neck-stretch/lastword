@@ -1,8 +1,8 @@
-import axios from "axios";
-import history from "../history";
+import axios from 'axios';
+import history from '../history';
 
 // action types
-const SET_USER_RESULTS = "SET_USER_RESULTS";
+const SET_USER_RESULTS = 'SET_USER_RESULTS';
 
 // action creators
 export const setUserResults = (userResults) => {
@@ -15,18 +15,17 @@ export const setUserResults = (userResults) => {
 // Thunk creators
 export const getUserResults = (token) => {
   return async (dispatch) => {
-    const { data } = await axios.get("/api/users/user/results", {
+    const { data } = await axios.get('/api/users/user/results', {
       headers: { authorization: token },
     });
     dispatch(setUserResults(data));
-    history.push("/myprofile");
   };
 };
 
 export default function userResults(state = [], action) {
   switch (action.type) {
     case SET_USER_RESULTS:
-      return [...state, ...action.userResults];
+      return action.userResults;
     default:
       return state;
   }

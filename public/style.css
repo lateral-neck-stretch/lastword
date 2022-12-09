@@ -1,7 +1,8 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-family: 'Roboto Mono', monospace;
-  background: linear-gradient(112.87deg, rgba(20, 139, 125, 0.903125) -11.18%, rgba(8, 69, 62, 0.8) -11.16%, rgba(10, 68, 155, 0.8) 125.44%);
+
+  background: linear-gradient(112.87deg, rgba(80, 240, 221, 0.903) -11.18%, rgba(22, 196, 175, 0.8) -11.16%, rgba(51, 133, 255, 0.8) 125.44%);
   background-repeat: no-repeat;
   height: 100%;
 }
@@ -29,7 +30,7 @@ form div {
 .navbar{
     display: flex;
     height: 68px;
-    background: rgba(0, 0, 0, 0.7);
+    background: purple;
     justify-content: space-between;
     align-items: center;
     padding: 0px 10%;
@@ -151,12 +152,13 @@ form div {
   flex-wrap: wrap;
   align-items: center;
   padding: 1rem;
+  justify-content: space-between;
   gap: 1rem;
 }
 .prompt-page{
   display: flex;
   flex-wrap: wrap;
-  margin: 30px 10%;
+  margin: 30px 5%;
   gap: 1rem;
 }
 .prompt-list{
@@ -170,14 +172,14 @@ form div {
   box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
-  min-width: 300px;
+  width: 100%;
 }
 .prompt:hover{
   transform: scale(1.05);
   transition: .3s ease-in-out;
 }
 .title{
-  color: white;
+  color: rgb(0, 12, 80);
   font-weight: 500;
   font-style: italic;
 }
@@ -194,8 +196,50 @@ form div {
   color: green;
 }
 .result-div{
-  padding: 1rem;
+  padding: 1rem 2rem;
   margin: 30px 10%;
   box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.25), 4px 4px 8px rgba(0, 0, 0, 0.25);
   background: rgba(255, 255, 255, 0.1);
 }
+
+.auth{
+  background: rgba(0, 0, 0, 0.6);
+  min-width: 200px;
+  max-width: fit-content;
+  margin: 30px auto;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1.3rem;
+  border-radius: 20px;
+}
+.auth-form{
+  display: flex;
+  flex-direction: column;
+}
+.auth-btn{
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+.auth-input{
+  font-size: 1rem;
+}
+@media (min-width: 550px){
+  .prompt{
+    width: calc(50% - 2.5rem);
+  }
+  
+  .prompt-page{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 10%;
+  gap: 1rem;
+}
+}
+@media (min-width: 700px){
+  .prompt{
+    width: calc(33% - 2.55rem);
+  }
+}
+
