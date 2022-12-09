@@ -159,13 +159,13 @@ function Navbar(props) {
           </>
         )}
         <li className='navbar_list_item'>
-          <Link to='/'>Home</Link>
-        </li>
-        <li className='navbar_list_item'>
           <Link to='/prompts'>Prompts</Link>
         </li>
         <li className='navbar_list_item'>
           <Link to='/myprofile'>Profile</Link>
+        </li>
+        <li className='navbar_list_item'>
+          <Link to='/leaderboard'>Leaderboard</Link>
         </li>
       </ul>
     </nav>
@@ -183,8 +183,7 @@ const mapDispatch = (dispatch) => {
     handleLogout(evt) {
       evt.preventDefault();
       dispatch(logout());
-      history.push('/LandingPage');
-    },
+
   };
 };
 const NavbarConnected = connect(mapNav, mapDispatch)(Navbar);
