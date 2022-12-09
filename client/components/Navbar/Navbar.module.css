@@ -1,20 +1,42 @@
 .navbar{
     display: flex;
-    height: 68px;
-    background: rgba(0, 0, 0, 0.7);
-    justify-content: space-between;
+    height: 90px;
+    background-color: transparent;
+    justify-content: flex-end;
     align-items: center;
-    padding: 0px 60px;
+    padding: 10px 1px;
+    box-shadow: none;
+    /* border-bottom-style: solid; */
 }
+
+.navbar::after{
+    content : "";
+    position:relative;
+    left    : 0;
+    bottom  : 10;
+    height  : 1px;
+    width   : 90%;  /* or 100px */
+    border-bottom:1px solid white;
+    justify-self: center;
+}
+
+.navbar_links{
+    display: flex;
+    background-color: transparent;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: none;
+    margin-right:10px;
+}
+
 .logo{
-    height: auto;
-    max-height: 100px;
+    height: 60px;
 }
 
 .navbar_list{
     display: flex;
     margin: 0;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
     max-width: 30vw;
     min-width: fit-content;
