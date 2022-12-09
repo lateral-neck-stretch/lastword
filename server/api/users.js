@@ -93,3 +93,27 @@ router.post("/user/results", requireUserToken, async (req, res, next) => {
     next(err);
   }
 });
+
+router.put("/user", requireUserToken, async (req, res, next) => {
+  const userResults = await UserResult.findAll({
+    where: {
+      userId: req.user.id
+    }
+  })
+  let promptIds = []
+  userResults.forEach((result) => {
+    promptIds.push(result.promptId)
+  })
+  let finalScores = []
+  let promptSet = [...new Set(promptIds)]
+  promptSet.forEach((id) => {
+    let idScores = userResults.filter((result) => result.promptId == id)
+    idScores.sort((a, b) => a.overallScore - b.overallScore)
+    finalScores.push(idScores[idScores.length-1].overallScore)
+  })
+  let finalScore = (finalScores.reduce((previous, current) => {return previous + current}) / finalScores.length)
+  let selectedUser = await User.findByPk(req.user.id)
+  selectedUser.proficiency = finalScore
+  await selectedUser.save()
+  res.send(selectedUser)
+})

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, connect } from "react-redux";
 import { setTranscript } from "../store/watson";
 import { postResult } from "../store/result";
+import usersReducer, { updateUserScore } from "../store/users";
 // import $ from 'jquery';
 
 function Results(props) {
@@ -72,13 +73,18 @@ function Results(props) {
 
   useEffect(() => {
     if (result && vocab) {
-      const token = window.localStorage.getItem("token");
-      let apiScore = Math.floor(result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length) * 100 * (result.length / props.location.state.key.length)
-      let vocabScore = Math.floor(vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length * 100)
-      let overallScore = Math.floor((apiScore + vocabScore) / 2)
-      props.postResult(overallScore, vocabScore, apiScore, 1, props.location.state.id, token)
+      async function dbUpdates() {
+        const token = window.localStorage.getItem("token");
+        let apiScore = Math.floor(result.reduce((previous, current) => { return previous + current.similarity}, 0) / result.length) * 100 * (result.length / props.location.state.key.length)
+        let vocabScore = Math.floor(vocab.reduce((previous, current) => { return previous + current }, 0) / vocab.length * 100)
+        let overallScore = Math.floor((apiScore + vocabScore) / 2)
+        await props.postResult(overallScore, vocabScore, apiScore, 1, props.location.state.id, token)
+        await props.updateUserScore(token)
+      }
+      dbUpdates()
     }
   }, [result, vocab])
+
 
   // useEffect(() => {
   //   if (result) {
@@ -95,7 +101,7 @@ function Results(props) {
   //   })
   // }
   // }, [result])
-
+  console.log(props.user)
 
   return (
     <div className="result-div">
@@ -130,19 +136,23 @@ function Results(props) {
           }
         })
         ) : (null)}
+        <div>New User Proficiency: </div>
+        {(props.user.length) ? (<div>{props.user[0].proficiency}</div>) : (null)}
     </div>
   );
 }
 
 const mapState = (state) => {
   return {
+    user: state.usersReducer,
     result: state.result
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    postResult: (overallScore, vocabScore, similarityScore, timerScore, id, token) => { dispatch(postResult(overallScore, vocabScore, similarityScore, timerScore, id, token)) }
+    postResult: (overallScore, vocabScore, similarityScore, timerScore, id, token) => { dispatch(postResult(overallScore, vocabScore, similarityScore, timerScore, id, token)) },
+    updateUserScore: (token) => { dispatch(updateUserScore(token))}
   }
 }
 
