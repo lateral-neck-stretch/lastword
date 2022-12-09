@@ -1,30 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { authenticate } from '../store';
+import React from 'react'
+import { connect } from 'react-redux'
+import { authenticate } from '../store'
+
 
 /**
  * COMPONENT
  */
-const AuthForm = (props) => {
-  const { name, displayName, handleSubmit, error } = props;
+const AuthForm = props => {
+  const { name, displayName, handleSubmit, error } = props
+
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
+    <div className='auth'>
+      <form onSubmit={handleSubmit} name={name} className="auth-form">
         <div>
           <label htmlFor='username'>
             <small>Username</small>
           </label>
-          <input name='username' type='text' />
+          <input name="username" type="text" className='auth-input' />
         </div>
         <div>
           <label htmlFor='password'>
             <small>Password</small>
           </label>
-          <input name='password' type='password' />
+          <input name="password" type="password" className='auth-input' />
         </div>
         <div>
-          <button type='submit'>{displayName}</button>
+          <button type="submit" className='auth-btn'>{displayName}</button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
