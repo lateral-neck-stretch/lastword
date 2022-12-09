@@ -91,31 +91,31 @@ function Navbar(props) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <a href={`/${setting}`}>
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+              <div key="user_droplist">
+                <a href="/myprofile">
+                  <MenuItem key="myprofile" onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">My Profile</Typography>
                   </MenuItem>
                 </a>
-              ))}
-              {isLoggedIn ? (
-                <MenuItem key={logout} onClick={handleLogout}>
-                  <Typography textAlign="center">Logout</Typography>
-                </MenuItem>
-              ) : (
-                <>
-                  <a href="/login">
-                    <MenuItem key="login" onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">Login</Typography>
-                    </MenuItem>
-                  </a>
-                  <a href="/signup">
-                    <MenuItem key="signup" onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">Sign Up</Typography>
-                    </MenuItem>
-                  </a>
-                </>
-              )}
+                {isLoggedIn ? (
+                  <MenuItem key={logout} onClick={handleLogout}>
+                    <Typography textAlign="center">Logout</Typography>
+                  </MenuItem>
+                ) : (
+                  <>
+                    <a href="/login">
+                      <MenuItem key="login" onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">Login</Typography>
+                      </MenuItem>
+                    </a>
+                    <a href="/signup">
+                      <MenuItem key="signup" onClick={handleCloseUserMenu}>
+                        <Typography textAlign="center">Sign Up</Typography>
+                      </MenuItem>
+                    </a>
+                  </>
+                )}
+              </div>
             </Menu>
           </Box>
         </Toolbar>
@@ -182,93 +182,3 @@ const mapDispatch = (dispatch) => {
 };
 const NavbarConnected = connect(mapNav, mapDispatch)(Navbar);
 export default NavbarConnected;
-
-/*
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function LinkTab(props) {
-  return (
-    <Tab
-      component="a"
-      onClick={(event) => {
-        event.preventDefault();
-      }}
-      {...props}
-    />
-  );
-}
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-export default function Navbar() {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const logoStyle = { width: 60, height: 60 };
-
-  return (
-    <nav
-      className={styles.navbar}
-      sx={({ flexDirection: "row" }, { justifyContent: "space-between" })}
-    >
-      <span className={styles.logo}>
-        <img
-          style={logoStyle}
-          className={styles.logo}
-          src={logo}
-          alt="lastword logo"
-        />
-        <Box sx={({ width: "100%" }, { justifyContent: "flex-end" })}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-            <Tabs className={"tabs"} value={value} onChange={handleChange}>
-              <LinkTab label="Home" href="/home" />
-              <LinkTab label="Prompts" href="/promps" />
-              <LinkTab label="Profile" href="/profile" />
-            </Tabs>
-          </Box>
-        </Box>
-      </span>
-    </nav>
-  );
-}
-*/
-/*
-import React from "react";
-import styles from "./Navbar.module.css";
-import { connect } from "react-redux";
-import { logout } from "../../store";
-import history from "../../history";
-import { Link } from "react-router-dom";
-*/
