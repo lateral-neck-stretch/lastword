@@ -26,7 +26,7 @@ const User = db.define("user", {
     type: Sequelize.INTEGER,
     validate: {
       min: 0,
-      max: 300,
+      max: 100,
     },
   },
   userAvatar: {

@@ -9,7 +9,7 @@ const ADD_RESULT = 'ADD_RESULT'
 /**
  * ACTION CREATORS
  */
-const addResult = userResult => ({type: ADD_RESULT, userResult})
+const addResult = (userResult) => ({type: ADD_RESULT, userResult})
 
 /**
  * THUNK CREATORS
