@@ -6,10 +6,6 @@ import { InstructionsPage } from './InstructionsPage';
 /**
  * COMPONENT
  */
-const Home = () => {
-  const { auth } = useSelector((state) => state);
-  const { username } = auth;
-
 export const Home = (props) => {
   const { username } = props;
   const [instructions, setInstructions] = useState(true);
