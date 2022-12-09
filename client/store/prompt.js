@@ -1,10 +1,10 @@
-import axios from "axios";
-import history from "../history";
+import axios from 'axios';
+import history from '../history';
 
 /**
  * ACTION TYPES
  */
-const SET_PROMPT = "SET_PROMPT";
+const SET_PROMPT = 'SET_PROMPT';
 
 /**
  * ACTION CREATORS
@@ -16,7 +16,7 @@ const setPrompt = (prompt) => ({ type: SET_PROMPT, prompt });
  */
 export const getPrompt = (id) => async (dispatch) => {
   const res = await axios.get(`/api/prompts/${id}`);
-  history.push("/prompts");
+  // history.push("/prompts");
   return dispatch(setPrompt(res.data));
 };
 
