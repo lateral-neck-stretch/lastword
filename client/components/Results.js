@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setTranscript } from '../store/watson';
 import { postResult } from '../store/result';
 import usersReducer, { updateUserScore } from '../store/user';
@@ -199,7 +200,18 @@ function Results(props) {
         : null}
       <div>New User Proficiency: </div>
       {props.user.length ? <div>{props.user[0].proficiency}</div> : null}
-      <Leaderboard id={props.location.state.id} />
+      <div className='prompt_leader'>
+        <Link
+          to={{
+            pathname: '/leaderboard',
+            state: {
+              id: props.location.state.id,
+            },
+          }}
+        >
+          View Leaderboard
+        </Link>
+      </div>
     </div>
   );
 }

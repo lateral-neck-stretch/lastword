@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchLeaderboard } from '../store/leaderboard';
 
 export const Leaderboard = (props) => {
-  const { id } = props;
+  const id = props.location.state.id;
   const dispatch = useDispatch();
   const { leaderboard } = useSelector((state) => state);
   useEffect(() => {

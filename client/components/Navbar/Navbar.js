@@ -21,7 +21,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-const pages = ['Home', 'Prompts', 'Leaderboard', 'About'];
+const pages = ['Home', 'Prompts', 'About'];
 const settings = ['Profile', 'Account'];
 
 function Navbar(props) {
