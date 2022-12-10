@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getUserResults } from './userResults';
 import history from '../history';
 
 //action types
@@ -26,6 +27,7 @@ export const fetchSingleUser = (token) => {
     const response = await axios.get('/api/users/user', {
       headers: { authorization: token },
     });
+    // dispatch(getUserResults(token));
     // history.push("/myprofile");
     return dispatch(singleUser(response.data));
   };

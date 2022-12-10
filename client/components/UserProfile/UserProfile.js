@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { fetchSingleUser } from '../../store/user';
+import { getUserResults } from '../../store/userResults';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
@@ -20,19 +21,21 @@ import { UserResults } from '../UserResults';
 function UserProfile(props) {
   const dispatch = useDispatch();
   const { userReducer } = useSelector((state) => state);
+  const { userResults } = useSelector((state) => state);
   const { username, id, userAvatar } = userReducer;
   const token = window.localStorage.getItem('token');
   // const { username, id, userAvatar } = props;
 
-  const sampleData = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 },
-  ];
+  const data = userResults.map((elem, idx) => ({
+    x: parseInt(idx),
+    y: parseInt(elem.overallScore),
+  }));
 
   React.useEffect(() => {
     dispatch(fetchSingleUser(token));
+  }, []);
+  React.useEffect(() => {
+    dispatch(getUserResults(token));
   }, []);
 
   return (
@@ -68,12 +71,13 @@ function UserProfile(props) {
               <div>
                 <h4>My Stats</h4>
                 <VictoryChart theme={VictoryTheme.material}>
-                  <VictoryArea data={sampleData} />
+                  <VictoryArea data={data} />
+                  {/* <VictoryArea data={sampleData} />
                   <VictoryAxis />
                 </VictoryChart>
                 <VictoryChart polar theme={VictoryTheme.material}>
                   <VictoryArea data={sampleData} />
-                  <VictoryPolarAxis />
+                  <VictoryPolarAxis /> */}
                 </VictoryChart>
               </div>
             </Scene>
@@ -83,9 +87,7 @@ function UserProfile(props) {
               triggerHook={0.5}
               offset={125}
             >
-              <div>
-                <UserResults />
-              </div>
+              <div>{/* <UserResults /> */}</div>
             </Scene>
           </Controller>
         </section>
