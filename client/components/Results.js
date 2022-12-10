@@ -4,6 +4,7 @@ import { useDispatch, connect } from 'react-redux';
 import { setTranscript } from '../store/watson';
 import { postResult } from '../store/result';
 import usersReducer, { updateUserScore } from '../store/user';
+import { Leaderboard } from './Leaderboard';
 // import $ from 'jquery';
 
 function Results(props) {
@@ -198,6 +199,7 @@ function Results(props) {
         : null}
       <div>New User Proficiency: </div>
       {props.user.length ? <div>{props.user[0].proficiency}</div> : null}
+      <Leaderboard id={props.location.state.id} />
     </div>
   );
 }
