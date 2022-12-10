@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { fetchSingleUser } from '../../store/users';
-import { connect, useSelector, useEffect } from 'react-redux';
+import { fetchSingleUser } from '../../store/user';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -18,9 +18,11 @@ import {
 import { UserResults } from '../UserResults';
 
 function UserProfile(props) {
-  // const singleUser = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const { userReducer } = useSelector((state) => state);
+  const { username, id, userAvatar } = userReducer;
   const token = window.localStorage.getItem('token');
-  const { username, id, userAvatar } = props;
+  // const { username, id, userAvatar } = props;
 
   const sampleData = [
     { quarter: 1, earnings: 13000 },
@@ -30,9 +32,7 @@ function UserProfile(props) {
   ];
 
   React.useEffect(() => {
-    console.log('props', props);
-    const user = props.fetchSingleUser(token);
-    console.log('user', user);
+    dispatch(fetchSingleUser(token));
   }, []);
 
   return (
@@ -41,7 +41,7 @@ function UserProfile(props) {
       <div className={style.sideBar} side='right'>
         <Avatar
           alt='user_avatar'
-          src='/triceratops_avatar.png'
+          src={userAvatar}
           sx={{ width: 100, height: 100, bgcolor: 'white' }}
         />
         <h2>Hi, {username} </h2>
@@ -94,20 +94,21 @@ function UserProfile(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    id: state.auth.id,
-    username: state.auth.username,
-    userAvatar: state.auth.userAvatar,
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     id: state.auth.id,
+//     username: state.auth.username,
+//     userAvatar: state.auth.userAvatar,
+//   };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchSingleUser: (token) => {
-      dispatch(fetchSingleUser(token));
-    },
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     fetchSingleUser: (token) => {
+//       dispatch(fetchSingleUser(token));
+//     },
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+// export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
+export default UserProfile;
