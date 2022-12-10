@@ -27,7 +27,7 @@ function UserProfile(props) {
   // const { username, id, userAvatar } = props;
 
   const data = userResults.map((elem, idx) => ({
-    x: parseInt(idx),
+    x: `${elem.createdAt}`,
     y: parseInt(elem.overallScore),
   }));
 
