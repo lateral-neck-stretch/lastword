@@ -1,10 +1,30 @@
-const router = require("express").Router();
+const router = require('express').Router();
 const {
-  models: { User, Prompt },
-} = require("../db");
+  models: { User, Prompt, UserResult },
+} = require('../db');
 module.exports = router;
 
-router.get("/:id", async (req, res, next) => {
+// GET /api/prompts/leaderboard
+router.get('/leaderboard/:id', async (req, res, next) => {
+  try {
+    const allResults = await UserResult.findAll({
+      attributes: ['promptId', 'overallScore', 'userId'],
+      include: [{ model: User, attributes: ['id', 'username'] }],
+      raw: true,
+    });
+    const leaderboard = allResults.filter(
+      (elem) => elem.promptId == req.params.id
+    );
+    const sortedLeaderboard = leaderboard.sort(
+      (a, b) => b['overallScore'] - a['overallScore']
+    );
+    res.json(sortedLeaderboard);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/:id', async (req, res, next) => {
   try {
     const prompt = await Prompt.findByPk(req.params.id);
     res.send(prompt);
@@ -13,10 +33,10 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
     const prompts = await Prompt.findAll({
-      attributes: ["id", "title", "topic", "difficulty"],
+      attributes: ['id', 'title', 'topic', 'difficulty'],
     });
     res.json(prompts);
   } catch (err) {
@@ -25,9 +45,9 @@ router.get("/", async (req, res, next) => {
 });
 
 // Currently hooked up to Watson/OutputContainer. Uses fetch to post here. Can move as necessary
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    console.log("Printing req.body: ", req.body);
+    console.log('Printing req.body: ', req.body);
     const { text } = await req.body;
     console.log(text);
   } catch (err) {

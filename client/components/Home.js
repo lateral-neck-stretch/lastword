@@ -14,7 +14,7 @@ export const Home = (props) => {
     <div className='home-div'>
       <h3 className='home-header'>Welcome, {username}</h3>
       <p className='home-p'>
-        Hi {username || ''}, start working on your translating skills with
+        Hi {username || 'guest'}, start working on your translating skills with
         LastWord's simple and intuitive learning method.
       </p>
       <Link to={'/prompts'} className='home-links'>

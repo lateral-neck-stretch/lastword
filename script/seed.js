@@ -19,25 +19,25 @@ async function seed() {
       username: 'aaron',
       password: '123',
       email: 'test@test.com',
-      proficiency: 250,
+      proficiency: 50,
     }),
     User.create({
       username: 'brad',
       password: '123',
       email: 'test@test.com',
-      proficiency: 200,
+      proficiency: 20,
     }),
     User.create({
       username: 'charlie',
       password: '123',
       email: 'test@test.com',
-      proficiency: 150,
+      proficiency: 15,
     }),
     User.create({
       username: 'dave',
       password: '123',
       email: 'test@test.com',
-      proficiency: 300,
+      proficiency: 30,
     }),
     User.create({
       username: 'elton',
@@ -61,19 +61,19 @@ async function seed() {
       username: 'hugh',
       password: '123',
       email: 'test@test.com',
-      proficiency: 120,
+      proficiency: 12,
     }),
     User.create({
       username: 'ivan',
       password: '123',
       email: 'test@test.com',
-      proficiency: 270,
+      proficiency: 27,
     }),
     User.create({
       username: 'john',
       password: '123',
       email: 'test@test.com',
-      proficiency: 175,
+      proficiency: 17,
     }),
   ]);
 

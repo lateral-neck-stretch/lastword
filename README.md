@@ -8,6 +8,6 @@ Last word is an educational app which allows users to practice learning their ne
 
 ## Getting Started
 - After you have signed up and logged in, you can begin learning your next language.
-- Your job is to read and translate the excerpt into the language you are learning.
+- Your job is to read, translate, and speak in English the given prompt.
 - Start by pressing "Record", and begin your translated speech.
 - You can review a history of your results in your User profile page.

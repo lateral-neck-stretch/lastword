@@ -2,7 +2,8 @@ import * as React from 'react';
 import style from './Navbar.module.css';
 import logo from './logo_white.png';
 import cornerLogo from './corner_logo_white.png';
-import { connect } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { fetchSingleUser, singleUser } from '../../store/user';
 import { logout } from '../../store';
 import history from '../../history';
 import { Link } from 'react-router-dom';
@@ -21,13 +22,24 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-const pages = ['Home', 'Prompts', 'Leaderboard', 'About'];
+
+const pages = ['Home', 'Prompts', 'About'];
 const settings = ['Profile', 'Account'];
 
 function Navbar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { handleLogout, isLoggedIn } = props;
+
+  const dispatch = useDispatch();
+  const token = window.localStorage.getItem('token');
+  const { userReducer } = useSelector((state) => state);
+  const { userAvatar } = userReducer;
+  React.useEffect(() => {
+    if (token) {
+      dispatch(fetchSingleUser(token));
+    } else dispatch(singleUser({}));
+  }, [isLoggedIn]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -54,10 +66,10 @@ function Navbar(props) {
             className={style.navbar_links}
             sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}
           >
-            {pages.map((page) => (
-              <a href={`/${page}`}>
+            {pages.map((page, idx) => (
+              <a href={page == 'Home' ? '/' : `/${page}`} key={idx}>
                 <Button
-                  key={page}
+                  key={page.id}
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
@@ -71,6 +83,11 @@ function Navbar(props) {
             <Tooltip title='Open settings'>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt='user avatar' sx={{ bgcolor: 'transparent' }}>
+                <Avatar
+                  src={userAvatar}
+                  alt='user avatar'
+                  sx={{ bgcolor: 'transparent' }}
+                >
                   <AccountCircle style={{ width: 50, height: 50 }} />
                 </Avatar>
               </IconButton>
