@@ -26,8 +26,8 @@ function UserProfile(props) {
   const token = window.localStorage.getItem('token');
   // const { username, id, userAvatar } = props;
 
-  const data = userResults.map((elem, idx) => ({
-    x: `${elem.createdAt}`,
+  const data = userResults.map((elem) => ({
+    x: parseInt(elem.id),
     y: parseInt(elem.overallScore),
   }));
 
