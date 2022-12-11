@@ -10,9 +10,11 @@ import usersReducer from './users';
 import transcript from './watson';
 import result from './result';
 import userResults from './userResults';
+import leaderboard from './leaderboard';
 
 const reducer = combineReducers({
   auth,
+  leaderboard,
   prompt,
   prompts,
   transcript,
