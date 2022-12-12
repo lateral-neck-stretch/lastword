@@ -82,11 +82,10 @@ function Results(props) {
       async function dbUpdates() {
         const token = window.localStorage.getItem('token');
         let apiScore =
-          Math.floor(
             result.reduce((previous, current) => {
               return previous + current.similarity;
             }, 0) / result.length
-          ) *
+           *
           100 *
           (result.length / props.location.state.key.length);
         let vocabScore = Math.floor(
@@ -96,6 +95,7 @@ function Results(props) {
             vocab.length) *
             100
         );
+        console.log("apiScore", apiScore, "vocabScore", vocabScore)
         let overallScore = Math.floor((apiScore + vocabScore) / 2);
         await props.postResult(
           overallScore,
@@ -138,9 +138,9 @@ function Results(props) {
               result.reduce((previous, current) => {
                 return previous + current.similarity;
               }, 0) / result.length
-            ) *
+             *
               100 *
-              (result.length / props.location.state.key.length) +
+              (result.length / props.location.state.key.length)) +
             '%'
           : null}
       </div>

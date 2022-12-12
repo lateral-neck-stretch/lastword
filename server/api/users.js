@@ -83,9 +83,9 @@ router.post('/user/results', requireUserToken, async (req, res, next) => {
     const userResult = await UserResult.create({
       userId: req.user.id,
       promptId: req.body.id,
-      overallScore: req.body.overallScore,
-      vocabScore: req.body.vocabScore,
-      similarityScore: req.body.similarityScore,
+      overallScore: Math.floor(req.body.overallScore),
+      vocabScore: Math.floor(req.body.vocabScore),
+      similarityScore: Math.floor(req.body.similarityScore),
       timerScore: 1,
     });
     res.send(userResult);
