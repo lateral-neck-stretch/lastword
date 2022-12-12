@@ -16,9 +16,9 @@ h4{
   position:sticky;
   flex-direction: column;
   color:white;
-  margin: 40px;
+  margin: 80px;
   columns:auto;
-  flex-basis: 20rem;
+  flex-basis: 15rem;
   flex-grow: 1;
   height: 100%;
   float: right;
@@ -31,9 +31,23 @@ h4{
   flex-wrap: wrap;
 }
 .scrollComponent{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   flex-basis: 0;
   flex-grow: 999;
   min-inline-size: 50%;
-  overflow:scroll;
+  min-height: 500px;
   color:white;
+  justify-content:flex-start;
+}
+.scrollComponent 
+  h2{
+  position:sticky;
+  grid-area: 1 / 1 / 2 / 4;
+  margin-top: 100px;
+  top:75px;
+  
 }
