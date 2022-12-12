@@ -1,26 +1,26 @@
-import React, { useEffect, useReducer, useRef } from "react";
-import recognizeFile from "watson-speech/speech-to-text/recognize-file";
-import recognizeMicrophone from "watson-speech/speech-to-text/recognize-microphone";
-import ControlContainer from "./ControlContainer";
-import OutputContainer from "./OutputContainer";
-import Toast from "./Toast";
-import { actionTypes, initialState, reducer } from "./ServiceReducer";
+import React, { useEffect, useReducer, useRef } from 'react';
+import recognizeFile from 'watson-speech/speech-to-text/recognize-file';
+import recognizeMicrophone from 'watson-speech/speech-to-text/recognize-microphone';
+import ControlContainer from './ControlContainer';
+import OutputContainer from './OutputContainer';
+import Toast from './Toast';
+import { actionTypes, initialState, reducer } from './ServiceReducer';
 import {
   convertAudioBlobToVisualizationData,
   formatStreamData,
   createError,
-} from "./ServiceUtil";
+} from './ServiceUtil';
 
-const FILE_UPLOAD_ERROR_TITLE = "File upload error";
+const FILE_UPLOAD_ERROR_TITLE = 'File upload error';
 const FILE_UPLOAD_ERROR_DESCRIPTION =
-  "There was a problem trying to read the file.";
-const NO_MICROPHONE_TITLE = "No microphone detected";
-const NO_MICROPHONE_DESCRIPTION = "Cannot transcribe from microphone.";
-const AUDIO_TRANSCRIPTION_ERROR_TITLE = "Audio transcription error";
+  'There was a problem trying to read the file.';
+const NO_MICROPHONE_TITLE = 'No microphone detected';
+const NO_MICROPHONE_DESCRIPTION = 'Cannot transcribe from microphone.';
+const AUDIO_TRANSCRIPTION_ERROR_TITLE = 'Audio transcription error';
 const AUDIO_TRANSCRIPTION_ERROR_DESCRIPTION =
-  "There was an error trying to read the audio data. Please try again.";
+  'There was an error trying to read the audio data. Please try again.';
 const GDPR_DISCLAIMER =
-  "This system is for demonstration purposes only and is not intended to process Personal Data. No Personal Data is to be entered into this system as it may not have the necessary controls in place to meet the requirements of the General Data Protection Regulation (EU) 2016/679.";
+  'This system is for demonstration purposes only and is not intended to process Personal Data. No Personal Data is to be entered into this system as it may not have the necessary controls in place to meet the requirements of the General Data Protection Regulation (EU) 2016/679.';
 
 /**
  * Watson template github: https://github.com/IBM/speech-to-text-code-pattern/tree/fbb5a38731f8b16e4f88a880a19694f81a35712b
@@ -166,13 +166,13 @@ export const ServiceContainer = () => {
 
   const onSubmit = (stream) => {
     stream
-      .on("data", (data) => {
+      .on('data', (data) => {
         parseResults(data);
       })
-      .on("end", () => {
+      .on('end', () => {
         handleStreamEnd();
       })
-      .on("error", () => {
+      .on('error', () => {
         dispatch({
           error: createError(
             AUDIO_TRANSCRIPTION_ERROR_TITLE,
@@ -196,7 +196,7 @@ export const ServiceContainer = () => {
       state.audioStream.recognizeStream.removeAllListeners();
     }
 
-    if (state.audioContext && state.audioContext.state === "suspended") {
+    if (state.audioContext && state.audioContext.state === 'suspended') {
       state.audioContext.resume();
     }
   };
@@ -233,7 +233,7 @@ export const ServiceContainer = () => {
       type: actionTypes.setIsRecording,
     });
     dispatch({
-      audioSource: "upload",
+      audioSource: 'upload',
       type: actionTypes.setAudioSource,
     });
     dispatch({
@@ -270,7 +270,7 @@ export const ServiceContainer = () => {
       type: actionTypes.setIsRecording,
     });
     dispatch({
-      audioSource: "sample",
+      audioSource: 'sample',
       type: actionTypes.setAudioSource,
     });
     dispatch({
@@ -306,7 +306,7 @@ export const ServiceContainer = () => {
       type: actionTypes.setIsUploadPlaying,
     });
     dispatch({
-      audioSource: "microphone",
+      audioSource: 'microphone',
       type: actionTypes.setAudioSource,
     });
     dispatch({
@@ -333,11 +333,11 @@ export const ServiceContainer = () => {
   };
 
   return (
-    <div className="service-container">
-      <Toast kind="info" subtitle={GDPR_DISCLAIMER} />
+    <div className='service-container'>
+      <Toast kind='info' subtitle={GDPR_DISCLAIMER} />
       {state.error && (
         <Toast
-          kind="error"
+          kind='error'
           title={state.error.title}
           subtitle={state.error.description}
           hideAfterFirstDisplay={false}
@@ -366,6 +366,7 @@ export const ServiceContainer = () => {
         audioDuration={state.audioDurationInMs}
         audioSource={state.audioSource}
         audioWaveContainerRef={audioWaveContainerRef}
+        isRecording={state.isRecording}
         isTranscribing={state.isTranscribing}
         keywordInfo={state.keywordInfo}
         transcriptArray={state.transcript}

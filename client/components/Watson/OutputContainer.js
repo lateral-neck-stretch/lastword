@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { Button, FormGroup, Tile } from "@carbon/react";
-import fetch from "isomorphic-fetch";
-import AudioWave from "./AudioWave";
-import TranscriptBox from "./TranscriptBox";
-import { setTranscript } from "../../store/watson";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { Button, FormGroup, Tile } from '@carbon/react';
+import fetch from 'isomorphic-fetch';
+import AudioWave from './AudioWave';
+import TranscriptBox from './TranscriptBox';
+import { setTranscript } from '../../store/watson';
 
 export const OutputContainer = ({
   audioAnalyzer,
@@ -13,16 +13,19 @@ export const OutputContainer = ({
   audioDuration,
   audioSource,
   audioWaveContainerRef,
+  isRecording,
   isTranscribing,
   keywordInfo,
   transcriptArray,
 }) => {
   const dispatch = useDispatch();
   const submitTranscript = async () => {
-    dispatch(setTranscript(transcriptArray));
+    if (transcriptArray.length > 0) {
+      dispatch(setTranscript(transcriptArray));
+    }
   };
   return (
-    <Tile className="output-container">
+    <Tile className='output-container'>
       {/* <h3 className="container-title">Output</h3>
       <FormGroup legendText="Audio">
         <AudioWave
@@ -34,15 +37,16 @@ export const OutputContainer = ({
           audioAnalyzer={audioAnalyzer}
         />
       </FormGroup> */}
-      <FormGroup legendText="Response" className="response">
+      <FormGroup legendText='Response' className='response'>
         <TranscriptBox
           keywordInfo={keywordInfo}
           transcriptArray={transcriptArray}
         />
       </FormGroup>
       <Button
-        className="submit-transcript btn"
-        kind="tertiary"
+        className='submit-transcript btn'
+        disabled={isRecording}
+        kind='tertiary'
         onClick={submitTranscript}
       >
         Submit Transcript
@@ -65,7 +69,7 @@ OutputContainer.propTypes = {
 OutputContainer.defaultProps = {
   audioDataArray: [],
   audioDuration: 0,
-  audioSource: "",
+  audioSource: '',
   isTranscribing: false,
   keywordInfo: [],
   transcriptArray: [],

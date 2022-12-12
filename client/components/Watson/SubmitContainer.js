@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Button, FileUploaderButton } from "@carbon/react";
-import fetch from "isomorphic-fetch";
-import models from "./models.json";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Button, FileUploaderButton } from '@carbon/react';
+import fetch from 'isomorphic-fetch';
+import models from './models.json';
 
 export const SubmitContainer = ({
   isRecording,
@@ -19,11 +19,12 @@ export const SubmitContainer = ({
   onStopRecording,
   useSpeakerLabels,
 }) => {
+  const [submitReady, setSubmitReady] = useState(false);
   const [keywordList, setKeywordList] = useState([]);
   useEffect(() => {
     let newKeywordList = [];
     if (keywordText.length > 0) {
-      newKeywordList = keywordText.split(",").map((k) => k.trim());
+      newKeywordList = keywordText.split(',').map((k) => k.trim());
     }
     setKeywordList(newKeywordList);
   }, [keywordText]);
@@ -34,7 +35,7 @@ export const SubmitContainer = ({
   const getBaseAudioConfig = async () => {
     let authResponse;
     let authJson;
-    authResponse = await fetch("/auth/watson/token");
+    authResponse = await fetch('/auth/watson/token');
     authJson = await authResponse.json();
     if (!authResponse.ok) {
       onError(authJson);
@@ -96,7 +97,7 @@ export const SubmitContainer = ({
   };
 
   return (
-    <div className="submit-container">
+    <div className='submit-container'>
       {/* {isSamplePlaying ? (
         <Button
           className="submit-button"
@@ -122,17 +123,17 @@ export const SubmitContainer = ({
       )} */}
       {isRecording ? (
         <Button
-          className="submit-button btn stop-record"
-          kind="tertiary"
+          className='submit-button btn stop-record'
+          kind='tertiary'
           onClick={onStopRecording}
         >
           Stop Recording
         </Button>
       ) : (
         <Button
-          className="submit-button btn record"
+          className='submit-button btn record'
           disabled={!modelName}
-          kind="tertiary"
+          kind='tertiary'
           onClick={async () => {
             const config = await getMicrophoneAudioConfig();
             if (!config.error) {
@@ -193,15 +194,15 @@ SubmitContainer.defaultProps = {
   isRecording: false,
   isSamplePlaying: false,
   isUploadPlaying: false,
-  keywordText: "",
+  keywordText: '',
   modelName: null,
-  onError: () => { },
-  onStartPlayingFileUpload: () => { },
-  onStopPlayingFileUpload: () => { },
-  onStartPlayingSample: () => { },
-  onStopPlayingSample: () => { },
-  onStartRecording: () => { },
-  onStopRecording: () => { },
+  onError: () => {},
+  onStartPlayingFileUpload: () => {},
+  onStopPlayingFileUpload: () => {},
+  onStartPlayingSample: () => {},
+  onStopPlayingSample: () => {},
+  onStartRecording: () => {},
+  onStopRecording: () => {},
   useSpeakerLabels: false,
 };
 
