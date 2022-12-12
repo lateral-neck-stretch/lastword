@@ -22,7 +22,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-
 const pages = ['Home', 'Prompts', 'About'];
 const settings = ['Profile', 'Account'];
 
@@ -82,7 +81,6 @@ function Navbar(props) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title='Open settings'>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt='user avatar' sx={{ bgcolor: 'transparent' }}>
                 <Avatar
                   src={userAvatar}
                   alt='user avatar'

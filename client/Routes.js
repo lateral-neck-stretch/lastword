@@ -12,6 +12,7 @@ import LandingPage from './components/LandingPage/LandingPage';
 import { UserResults } from './components/UserResults';
 import { Leaderboard } from './components/Leaderboard';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+import { About } from './components/About';
 
 /**
  * COMPONENT
@@ -29,6 +30,7 @@ class Routes extends Component {
         {isLoggedIn ? (
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route path='/About' component={About} />
             <Route path='/LandingPage' component={LandingPage} />
             <Route path='/prompts/:id' component={UserTranslatePage} />
             <Route exact path='/prompts' component={PromptSelection} />
@@ -42,6 +44,7 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route path='About' component={About} />
             <Route path='/login' component={Login} />
             <Route path='/signup' component={Signup} />
             <Route path='/leaderboard' component={Leaderboard} />
