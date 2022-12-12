@@ -134,10 +134,11 @@ function Results(props) {
       <div>
         {result
           ? 'Translation score: ' +
-            (result.reduce((previous, current) => {
-              return previous + current.similarity;
-            }, 0) /
-              result.length) *
+            Math.floor(
+              result.reduce((previous, current) => {
+                return previous + current.similarity;
+              }, 0) / result.length
+            ) *
               100 *
               (result.length / props.location.state.key.length) +
             '%'
