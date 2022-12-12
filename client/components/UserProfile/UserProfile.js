@@ -1,28 +1,27 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import { fetchSingleUser } from '../../store/user';
 import { getUserResults } from '../../store/userResults';
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
 import style from './UserProfile.module.css';
-import { Controller, Scene } from 'react-scrollmagic';
-import {
-  VictoryChart,
-  VictoryArea,
-  VictoryAxis,
-  VictoryPolarAxis,
-  VictoryTheme,
-} from 'victory';
-
 import { UserResults } from '../UserResults';
+import Chart from 'react-apexcharts';
+
+/// MUI ///
+import Grid from '@mui/material/Grid';
+import Grid2 from '@mui/material/Unstable_Grid2';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import GaugeChart from './GaugeChart';
 
 function UserProfile(props) {
   const dispatch = useDispatch();
-  const { userReducer } = useSelector((state) => state);
+  const { userReducer } = useSelector((state) => state || []);
   const { userResults } = useSelector((state) => state);
   const { username, id, userAvatar } = userReducer;
+  const languages = useSelector((state) => state.auth.userLanguages || []);
+  const proficiency = useSelector((state) => state.auth.proficiency || []);
   const token = window.localStorage.getItem('token');
   // const { username, id, userAvatar } = props;
 
@@ -38,6 +37,8 @@ function UserProfile(props) {
     dispatch(getUserResults(token));
   }, []);
 
+  // GAUGE CHART
+
   return (
     <div className={style.sidebarPage}>
       {/* ///USER AVATAR/// */}
@@ -47,50 +48,31 @@ function UserProfile(props) {
           src={userAvatar}
           sx={{ width: 100, height: 100, bgcolor: 'white' }}
         />
+        <br />
         <h2>Hi, {username} </h2>
-        <h4>Level 8</h4>
-        <h4>User since 2022</h4>
+        {/* <h4>Level 8</h4> */}
+        <h5>User since 2022</h5>
         <h3>Languages:</h3>
         <ul>
-          {/* hardcoded but can use map function for every user */}
-          <li>English</li>
-          <li>Spanish</li>
-          <li>Portuguese</li>
+          {languages.map((language) => {
+            return <li>{language}</li>;
+          })}
         </ul>
       </div>
 
       <div className={style.scrollComponent}>
-        <section>
-          <Controller>
-            <Scene
-              duration={800}
-              pin={{ pushFollowers: true }}
-              // triggerHook={0.5}
-              offset={125}
-            >
-              <div>
-                <h4>My Stats</h4>
-                <VictoryChart theme={VictoryTheme.material}>
-                  <VictoryArea data={data} />
-                  {/* <VictoryArea data={sampleData} />
-                  <VictoryAxis />
-                </VictoryChart>
-                <VictoryChart polar theme={VictoryTheme.material}>
-                  <VictoryArea data={sampleData} />
-                  <VictoryPolarAxis /> */}
-                </VictoryChart>
-              </div>
-            </Scene>
-            <Scene
-              duration={800}
-              pin={{ pushFollowers: true }}
-              triggerHook={0.5}
-              offset={125}
-            >
-              <div>{/* <UserResults /> */}</div>
-            </Scene>
-          </Controller>
-        </section>
+        <h2>My Stats</h2>
+        <GaugeChart proficiency={proficiency} />
+        <p>
+          Your proficiency score reflects your average performance in your given
+          language over the past week.
+          <br></br>
+          <br></br>
+          As your overall scores improve over time, your proficiency score will
+          go up. A proficiency score of 100/100 is roughly equivalent to levels
+          B2 to C2 on the CEFR (Common European Framework of Reference for
+          Languages) Scale.
+        </p>
       </div>
     </div>
   );
@@ -114,3 +96,34 @@ function UserProfile(props) {
 
 // export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
 export default UserProfile;
+
+/*
+ <div className={style.scrollComponent}>
+        <section>
+          <h4>My Stats</h4>
+          <Controller>
+            <Scene
+              duration={800}
+              pin={{ pushFollowers: true }}
+              triggerHook={0.5}
+              offset={50}
+            >
+              <div>
+                <h4>My Stats</h4>
+                <VictoryChart theme={VictoryTheme.material}>
+                  <VictoryArea data={data} />
+                </VictoryChart>
+              </div>
+            </Scene>
+            <Scene
+              duration={800}
+              pin={{ pushFollowers: true }}
+              triggerHook={0.5}
+              offset={125}
+            >
+              <div><UserResults /></div>
+              </Scene>
+              </Controller>
+            </section>
+          </div>
+*/

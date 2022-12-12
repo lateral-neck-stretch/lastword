@@ -1,0 +1,25 @@
+.footer{
+  display: flex;
+  height: 90px;
+  background-color: transparent;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: none;
+padding-left:16px;
+padding-right:16px;
+}
+
+.footer::after{
+  content : "";
+  position:relative;
+  left    : 0;
+  bottom  : 45px;
+  height  : 1px;
+  width   : 90%;
+  border-bottom:1px solid white;
+  justify-self: center;
+}
+.logo{
+  height: 60px;
+  align-self:center;
+}
