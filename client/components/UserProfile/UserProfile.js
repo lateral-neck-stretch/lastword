@@ -54,8 +54,8 @@ function UserProfile(props) {
         <h5>User since 2022</h5>
         <h3>Languages:</h3>
         <ul>
-          {languages.map((language) => {
-            return <li>{language}</li>;
+          {languages.map((language, idx) => {
+            return <li key={idx}>{language}</li>;
           })}
         </ul>
       </div>
