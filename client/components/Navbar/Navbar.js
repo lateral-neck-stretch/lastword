@@ -30,15 +30,15 @@ function Navbar(props) {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { handleLogout, isLoggedIn } = props;
 
-  const dispatch = useDispatch();
-  const token = window.localStorage.getItem('token');
-  const { userReducer } = useSelector((state) => state);
-  const { userAvatar } = userReducer;
-  React.useEffect(() => {
-    if (token) {
-      dispatch(fetchSingleUser(token));
-    } else dispatch(singleUser({}));
-  }, [isLoggedIn]);
+  // const dispatch = useDispatch();
+  // const token = window.localStorage.getItem('token');
+  // const { userReducer } = useSelector((state) => state);
+  // const { userAvatar } = userReducer;
+  // React.useEffect(() => {
+  //   if (token) {
+  //     dispatch(fetchSingleUser(token));
+  //   } else dispatch(singleUser({}));
+  // }, [isLoggedIn]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -82,7 +82,7 @@ function Navbar(props) {
             <Tooltip title='Open settings'>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
-                  src={userAvatar}
+                  // src={userAvatar}
                   alt='user avatar'
                   sx={{ bgcolor: 'white' }}
                 >
