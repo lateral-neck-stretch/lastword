@@ -1,5 +1,5 @@
 {
-  "name": "last-word",
+  "name": "lastword",
   "version": "2.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
   "main": "server/index.js",
